@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        section: "#F4F4F4",
+      },
       fontFamily: {
         display: ["Playfair Display", "serif"],
         body: ["Lato", "sans-serif"],
