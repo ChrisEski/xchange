@@ -1,0 +1,70 @@
+import { navLInks } from "@/lib/links";
+import Link from "next/link";
+
+const Footer = () => {
+  return (
+    <footer className="bg-neutral-200 px-12 py-3">
+      <div className="container max-w-[1220px] flex flex-col gap-10">
+        <Link
+          href="/"
+          className="font-black text-2xl"
+        >
+          XCHANGE
+        </Link>
+        <div className="flex justify-between">
+          <div className="max-w-[300px]">
+            <h3 className="font-bold mb-4">About Us</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sit facilis tempore
+              necessitatibus deleniti veritatis labore.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold mb-4">Categories</h3>
+            <ul>
+              {navLInks.map((link) => (
+                <li key={link.title}>
+                  <Link href={link.path}>{link.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bold mb-4">Legal</h3>
+            <ul>
+              <li>
+                <Link href="/privacy">Privacy Policy</Link>
+              </li>
+              <li>
+                <Link href="/cookies">Cookies Policy</Link>
+              </li>
+              <li>
+                <Link href="/tos">Terms of Service</Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bold mb-4">Newsletter</h3>
+            <h4>Newsletter form</h4>
+          </div>
+        </div>
+        <div className="flex justify-between items-center text-xs">
+          <span>
+            Copyright © 2024 <span className="font-bold">XCHANGE</span>
+          </span>
+          <span>
+            Designed & Developed by{" "}
+            <Link
+              href="https://github.com/ChrisEski"
+              className="font-bold"
+            >
+              Chris Eski
+            </Link>
+          </span>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
