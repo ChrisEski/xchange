@@ -2,13 +2,6 @@ import Link from "next/link";
 import NavSocials from "./NavSocials";
 import NavAccount from "./NavAccount";
 import NavLinks from "./NavLinks";
-import { Lato, Playfair_Display } from "next/font/google";
-
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-});
-
-const linksFont = playfairDisplay.className;
 
 const Header = () => {
   const session = true;
@@ -20,7 +13,7 @@ const Header = () => {
         <NavSocials />
         <Link
           href="/"
-          className="font-black text-3xl"
+          className="font-black text-4xl"
         >
           XCHANGE
         </Link>
@@ -28,7 +21,7 @@ const Header = () => {
       </section>
       <section>
         {/* SECONDARY SECTION */}
-        <NavLinks linksFont={linksFont} />
+        <NavLinks />
       </section>
     </header>
   );

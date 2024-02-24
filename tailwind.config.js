@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
   ],
   prefix: "",
   theme: {
@@ -17,6 +17,13 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        display: ["Playfair Display", "serif"],
+        body: ["Lato", "sans-serif"],
+      },
+      gridTemplateColumns: {
+        colAutoWrap: "repeat(auto-fill, minmax(380px, 1fr));",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -34,4 +41,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
