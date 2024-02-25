@@ -14,7 +14,7 @@ const SinglePost = () => {
           <Image
             src="/technology.jpg"
             alt="Article image"
-            objectFit="cover"
+            style={{ objectFit: "cover" }}
             fill
             className="transform hover:scale-110 transition-transform duration-300"
           />
