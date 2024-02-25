@@ -1,5 +1,5 @@
 const SectionContainer = ({ children, bgColor }) => {
-  return <div className={bgColor ? bgColor : ""}>{children}</div>;
+  return <section className={bgColor ? bgColor : ""}>{children}</section>;
 };
 
 export default SectionContainer;

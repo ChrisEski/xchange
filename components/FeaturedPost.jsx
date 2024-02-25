@@ -29,20 +29,14 @@ const FeaturedPost = () => {
           </span>
           <span className=" text-neutral-300">Published 01/01/2024</span>
         </div>
-        <h3 className="text-lg font-bold font-display leading-none text-white">Article Title</h3>
+        <h3 className="text-lg font-bold font-display leading-none text-white mt-1">Article Title</h3>
         <p className="text-sm text-neutral-300">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis ipsa veniam voluptatem? Laudantium
           debitis harum nobis fugiat odio commodi!
         </p>
         <Separator className="w-[25%] bg-white/30" />
         <div className="text-neutral-300 text-xs">
-          Written by{" "}
-          <Link
-            href="#"
-            className="text-white font-bold"
-          >
-            John Doe
-          </Link>
+          Written by <span className="text-white font-bold">John Doe</span>
         </div>
       </div>
     </Link>

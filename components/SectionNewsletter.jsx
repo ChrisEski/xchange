@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const SectionNewsletter = () => {
   return (
-    <section className="px-12 py-16 max-w-[1220px] mx-auto flex justify-between items-center">
+    <div className="px-12 py-16 max-w-[1220px] mx-auto flex justify-between items-center">
       <div>
         <h3 className="font-display font-bold text-5xl">Sign up for our Newsletter</h3>
         <p className="text-xl mt-2">Be the first to read the latest articles</p>
@@ -17,7 +17,7 @@ const SectionNewsletter = () => {
           <Button type="submit">Subscribe</Button>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
