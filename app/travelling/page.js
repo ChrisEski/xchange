@@ -1,5 +1,5 @@
-const travelling = () => {
+const Travelling = () => {
   return <div>Travelling</div>;
 };
 
-export default travelling;
+export default Travelling;
