@@ -4,10 +4,8 @@ import SectionFeatured from "@/components/SectionFeatured";
 import SectionNewsletter from "@/components/SectionNewsletter";
 import SectionPosts from "@/components/SectionPosts";
 import SectionSocials from "@/components/SectionSocials";
-import { getPosts } from "@/lib/data";
 
 export default async function Home() {
-  const posts = await getPosts();
   return (
     <main className="flex-1">
       <SectionContainer>
