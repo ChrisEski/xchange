@@ -16,7 +16,7 @@ const Banner = () => {
             <Image
               src="/travelling.jpg"
               fill
-              objectFit="cover"
+              style={{ objectFit: "cover" }}
               className="transform transition-transform duration-300 group-hover:scale-110"
             />
           </div>
