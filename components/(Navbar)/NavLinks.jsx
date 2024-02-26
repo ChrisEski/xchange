@@ -2,7 +2,9 @@
 
 import { navLInks } from "@/lib/links";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const NavLinks = () => {
   const pathname = usePathname();

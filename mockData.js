@@ -21,6 +21,8 @@ export const users = [
   {
     username: "user1",
     email: "user1@example.com",
+    firstName: "User",
+    lastName: "One",
     password: "123",
     provider: "local",
     isAdmin: true,
@@ -32,6 +34,8 @@ export const users = [
   {
     username: "user2",
     email: "user2@example.com",
+    firstName: "User",
+    lastName: "Two",
     password: "password2",
     provider: "local",
     isAdmin: false,

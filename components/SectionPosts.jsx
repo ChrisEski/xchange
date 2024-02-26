@@ -1,5 +1,5 @@
 import SectionTitle from "./SectionTitle";
-import SinglePost from "./SinglePost";
+import SinglePostCard from "./SinglePostCard";
 import {
   Pagination,
   PaginationContent,
@@ -21,9 +21,9 @@ const SectionPosts = ({ category, viewAll }) => {
         viewAll={viewAll}
       />
       <div className="cards grid grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))] gap-5">
-        <SinglePost />
-        <SinglePost />
-        <SinglePost />
+        <SinglePostCard />
+        <SinglePostCard />
+        <SinglePostCard />
       </div>
       <div className="flex justify-center items-center"></div>
     </div>

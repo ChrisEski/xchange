@@ -5,19 +5,37 @@ const Footer = () => {
   return (
     <footer className="bg-section px-12 pb-3 pt-16">
       <div className="container max-w-[1220px] flex flex-col gap-10">
-        <Link
+        {/* <Link
           href="/"
           className="font-black text-2xl"
         >
           XCHANGE
-        </Link>
+        </Link> */}
         <div className="flex justify-between">
           <div className="max-w-[300px]">
-            <h3 className="font-bold mb-4">About Us</h3>
-            <p>
+            {/* <h3 className="font-bold mb-4">About Us</h3>
+             */}
+            <Link
+              href="/"
+              className="font-black text-2xl"
+            >
+              XCHANGE
+            </Link>
+            <p className="mt-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sit facilis tempore
               necessitatibus deleniti veritatis labore.
             </p>
+          </div>
+          <div>
+            <h3 className="font-bold mb-4">Blog</h3>
+            <ul>
+              <li>
+                <Link href="/about">About Us</Link>
+              </li>
+              <li>
+                <Link href="/contact">Contact</Link>
+              </li>
+            </ul>
           </div>
           <div>
             <h3 className="font-bold mb-4">Categories</h3>

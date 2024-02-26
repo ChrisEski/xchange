@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 
-const SinglePost = () => {
+const SinglePostCard = () => {
   return (
     <article className="rounded-lg overflow-hidden">
       <span className="absolute text-white z-10 rounded text-sm font-semibold px-2 bg-white/20 m-4 border border-white">
@@ -45,4 +45,4 @@ const SinglePost = () => {
   );
 };
 
-export default SinglePost;
+export default SinglePostCard;

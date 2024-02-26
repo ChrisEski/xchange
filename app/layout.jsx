@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className="h-100"
     >
-      <body className="font-body flex flex-col min-h-[100vh]">
+      <body className="font-body flex flex-col min-h-screen">
         <Header />
         {children}
         <Footer />
