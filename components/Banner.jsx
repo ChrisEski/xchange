@@ -5,8 +5,7 @@ import { getSinglePost } from "@/lib/data";
 import { capitalizeFirstLetter, formatDate } from "@/lib/utils";
 
 const Banner = async () => {
-  const post = await getSinglePost("65dbf992cfb0106d747d6895");
-  console.log("Banner post: ", post.title);
+  const post = await getSinglePost("post-2");
   const { title, body, slug, category, author, featuredImage, createdAt } = post;
   return (
     <div className="flex flex-col gap-8 px-12 py-16 max-w-[1220px] mx-auto">
