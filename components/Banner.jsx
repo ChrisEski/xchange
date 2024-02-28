@@ -1,14 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
-import { getSinglePost } from "@/lib/data";
 import { capitalizeFirstLetter, createExcerpt, formatDate } from "@/lib/utils";
 import CategoryLabel from "./CategoryLabel";
+import { getLastPost, getPosts } from "@/lib/data";
 
 const Banner = async () => {
-  const post = await getSinglePost("mastering-the-art-of-web-development-navigating-the-digital-landscape");
-  const { title, body, slug, category, author, featuredImage, createdAt } = post;
+  const [lastPost] = await getPosts(1);
+  const { title, body, slug, category, author, featuredImage, createdAt } = lastPost;
   const { firstName, lastName } = author;
+
   return (
     <div className="flex flex-col gap-8 px-12 py-16 max-w-[1220px] mx-auto">
       {/* <div className="flex justify-between gap-5"> */}

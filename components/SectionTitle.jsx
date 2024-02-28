@@ -22,7 +22,7 @@ const SectionTitle = ({ category, altTitle, viewAll }) => {
           </Link>
         )}
       </div>
-      <div className="h-1 bg-red-600 w-[10%] mt-1"></div>
+      <div className="h-1 bg-red-600 w-[10%] mt-2"></div>
     </div>
   );
 };
