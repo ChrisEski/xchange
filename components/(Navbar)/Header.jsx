@@ -2,6 +2,8 @@ import Link from "next/link";
 import NavSocials from "./NavSocials";
 import NavAccount from "./NavAccount";
 import NavLinks from "./NavLinks";
+import ThemeToggleBtn from "../ui/themeToggleBtn";
+import { navLinks } from "@/lib/links";
 
 const Header = () => {
   const session = true;
@@ -21,6 +23,7 @@ const Header = () => {
       </section>
       <section>
         {/* SECONDARY SECTION */}
+        {/* <ThemeToggleBtn /> */}
         <NavLinks />
       </section>
     </header>

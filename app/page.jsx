@@ -5,7 +5,7 @@ import SectionNewsletter from "@/components/SectionNewsletter";
 import SectionPosts from "@/components/SectionPosts";
 import SectionSocials from "@/components/SectionSocials";
 
-export default async function Home() {
+export default function Home() {
   return (
     <main className="flex-1">
       <SectionContainer>

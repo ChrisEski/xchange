@@ -8,7 +8,7 @@ const SectionTitle = ({ category, altTitle, viewAll }) => {
   return (
     <div>
       <div className="flex justify-between items-center">
-        <h2 className="font-display font-bold text-5xl">
+        <h2 className="font-display font-bold text-5xl dark:text-white">
           {category ? `${capitalizedCategory} Articles` : altTitle}
         </h2>
         {viewAll && (

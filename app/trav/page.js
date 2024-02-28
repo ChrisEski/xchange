@@ -1,4 +1,5 @@
-const Travelling = () => {
+const Travelling = ({ params }) => {
+  console.log(params);
   return <div>Travelling</div>;
 };
 

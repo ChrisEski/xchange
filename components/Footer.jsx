@@ -1,4 +1,4 @@
-import { navLInks } from "@/lib/links";
+import { navLinks } from "@/lib/links";
 import Link from "next/link";
 
 const Footer = () => {
@@ -40,7 +40,7 @@ const Footer = () => {
           <div>
             <h3 className="font-bold mb-4">Categories</h3>
             <ul>
-              {navLInks.map((link) => (
+              {navLinks.map((link) => (
                 <li key={link.title}>
                   <Link href={link.path}>{link.title}</Link>
                 </li>
