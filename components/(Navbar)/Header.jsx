@@ -4,8 +4,9 @@ import NavAccount from "./NavAccount";
 import NavLinks from "./NavLinks";
 import ThemeToggleBtn from "../ui/themeToggleBtn";
 import { navLinks } from "@/lib/links";
+import { getSingleUser } from "@/lib/data";
 
-const Header = () => {
+const Header = async () => {
   const session = true;
 
   return (

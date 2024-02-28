@@ -6,7 +6,7 @@ export const posts = [
     author: "65dbf993cfb0106d747d6898",
     featuredImage:
       "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    featuredPost: "false",
+    featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
     category: "technology",
@@ -18,7 +18,7 @@ export const posts = [
     author: "65dbf993cfb0106d747d6898",
     featuredImage:
       "https://plus.unsplash.com/premium_photo-1661963212517-830bbb7d76fc?q=80&w=1986&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    featuredPost: "false",
+    featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
     category: "technology",
@@ -30,7 +30,7 @@ export const posts = [
     author: "65dbf993cfb0106d747d6898",
     featuredImage:
       "https://images.unsplash.com/photo-1499591934245-40b55745b905?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    featuredPost: "false",
+    featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
     category: "travelling",
@@ -42,7 +42,7 @@ export const posts = [
     author: "65dbf993cfb0106d747d6898",
     featuredImage:
       "https://images.unsplash.com/photo-1527424977227-054efad247da?q=80&w=1977&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    featuredPost: "true",
+    featuredPost: true,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
     category: "psycology",
@@ -54,7 +54,7 @@ export const posts = [
     author: "65dbf993cfb0106d747d6898",
     featuredImage:
       "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    featuredPost: "false",
+    featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
     category: "technology",
@@ -66,7 +66,7 @@ export const posts = [
     author: "65dbf993cfb0106d747d6898",
     featuredImage:
       "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    featuredPost: "false",
+    featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
     category: "travelling",
@@ -78,7 +78,7 @@ export const posts = [
     author: "65dbf993cfb0106d747d6898",
     featuredImage:
       "https://images.unsplash.com/photo-1498673394965-85cb14905c89?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    featuredPost: "false",
+    featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
     category: "psycology",
@@ -90,7 +90,7 @@ export const posts = [
     author: "65dbf993cfb0106d747d6898",
     featuredImage:
       "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    featuredPost: "false",
+    featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
     category: "technology",
@@ -102,7 +102,7 @@ export const posts = [
     author: "65dbf993cfb0106d747d6898",
     featuredImage:
       "https://images.unsplash.com/photo-1533850595620-7b1711221751?q=80&w=2145&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    featuredPost: "false",
+    featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
     category: "travelling",
@@ -114,7 +114,7 @@ export const posts = [
     author: "65dbf993cfb0106d747d6898",
     featuredImage:
       "https://images.unsplash.com/photo-1638443436690-db587cc66f12?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    featuredPost: "false",
+    featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
     category: "psycology",

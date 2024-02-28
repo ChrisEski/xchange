@@ -1,5 +1,4 @@
-import { getPosts, getSinglePost } from "@/lib/data";
-import { connectToDb } from "@/lib/database";
+import { getSinglePost } from "@/lib/data";
 import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
