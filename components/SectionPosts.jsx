@@ -1,17 +1,6 @@
-import { getPosts, getSectionPosts } from "@/lib/data";
+import { getSectionPosts } from "@/lib/data";
 import SectionTitle from "./SectionTitle";
 import SinglePostCard from "./SinglePostCard";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
-
-// flex flex-col gap-16
 
 const SectionPosts = async ({ category, viewAll }) => {
   const posts = await getSectionPosts(3, category);
