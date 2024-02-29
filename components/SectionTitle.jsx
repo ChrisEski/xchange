@@ -3,14 +3,23 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const SectionTitle = ({ category, altTitle, viewAll }) => {
+const SectionTitle = ({ category, altTitle, viewAll, related }) => {
   const capitalizedCategory = capitalizeFirstLetter(category);
+
+  let sectionTitle;
+  if (related) {
+    sectionTitle = "Related Articles";
+  } else {
+    if (category) {
+      sectionTitle = capitalizedCategory;
+    } else {
+      sectionTitle = altTitle;
+    }
+  }
   return (
     <div>
       <div className="flex justify-between items-center">
-        <h2 className="font-display font-bold text-5xl dark:text-white">
-          {category ? `${capitalizedCategory} Articles` : altTitle}
-        </h2>
+        <h2 className="font-display font-bold text-5xl dark:text-white">{sectionTitle}</h2>
         {viewAll && (
           <Link href="#">
             <Button

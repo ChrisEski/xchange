@@ -27,7 +27,7 @@ export default function Home() {
         />
       </SectionContainer>
       <SectionContainer bgColor="bg-section">
-        <SectionFeatured />
+        <SectionSocials />
       </SectionContainer>
       <SectionContainer>
         <SectionPosts
@@ -36,7 +36,7 @@ export default function Home() {
         />
       </SectionContainer>
       <SectionContainer bgColor="bg-section">
-        <SectionSocials />
+        <SectionFeatured />
       </SectionContainer>
       <SectionContainer>
         <SectionPosts

@@ -8,6 +8,7 @@ const SectionPosts = async ({ category, viewAll }) => {
   return (
     <div className="flex flex-col gap-8 px-12 py-16 max-w-[1220px] mx-auto">
       <SectionTitle
+        related={true}
         category={category}
         // IF A SECTION HAS PAGINATION, SHOULD HAVE THE 'VIEW ALL' BUTTON AS WELL
         viewAll={viewAll}

@@ -4,16 +4,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import Image from "next/image";
 import CategoryLabel from "@/components/CategoryLabel";
-// {getInitials(firstName, lastName)}
+import SectionContainer from "@/components/SectionContainer";
+import SectionPosts from "@/components/SectionPosts";
 
 const Article = async ({ params }) => {
   const { slug } = params;
   const post = await getSinglePost(slug);
   const { title, body, author, featuredImage, category, createdAt } = post;
-  const { username, firstName, lastName, avatar, isAdmin } = author;
-  // console.log("**************** AUTHOR ****************");
-  // console.log(author.lastName, author.firstName);
-  // console.log("**************** AUTHOR ****************");
+  const { firstName, lastName, avatar, isAdmin } = author;
+  const authorInitials = getInitials(firstName, lastName);
 
   return (
     <section className="flex flex-col gap-12 px-12 py-16 max-w-[1220px] mx-auto ">
@@ -32,7 +31,7 @@ const Article = async ({ params }) => {
                 src={avatar}
                 style={{ objectFit: "cover" }}
               />
-              <AvatarFallback>UO</AvatarFallback>
+              <AvatarFallback>{authorInitials}</AvatarFallback>
             </Avatar>
             <div className="text-neutral-600 flex flex-col">
               <span className="font-bold text-black">
@@ -53,6 +52,12 @@ const Article = async ({ params }) => {
         />
       </div>
       <p className="text-lg">{body}</p>
+      <SectionContainer>
+        <SectionPosts
+          category={category}
+          viewAll={true}
+        />
+      </SectionContainer>
     </section>
   );
 };
