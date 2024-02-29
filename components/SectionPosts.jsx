@@ -3,6 +3,7 @@ import SectionTitle from "./SectionTitle";
 import SinglePostCard from "./SinglePostCard";
 
 const SectionPosts = async ({ category, viewAll }) => {
+  console.log("Category:", category);
   const posts = await getSectionPosts(3, category);
 
   return (

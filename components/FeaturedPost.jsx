@@ -21,6 +21,7 @@ const FeaturedPost = ({ post }) => {
           <Image
             src={featuredImage}
             fill
+            alt={title}
             style={{ objectFit: "cover" }}
             className="transform transition-transform duration-300 group-hover:scale-110"
           />

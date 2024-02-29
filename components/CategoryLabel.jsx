@@ -1,11 +1,13 @@
 import { capitalizeFirstLetter } from "@/lib/utils";
 
-const CategoryLabel = ({ category, dark = false }) => {
+const CategoryLabel = ({ category, dark }) => {
+  let color = dark ? "black" : "white";
+
   return (
     <span
-      className={`text-${dark ? "black" : "white"} rounded font-semibold px-2 ${
+      className={`text-${color} rounded font-semibold px-2 ${
         !dark && `bg-white/20`
-      } border border-${dark ? "black" : "white"} pb-[3px]`}
+      } border border-${color} pb-[3px]`}
     >
       {capitalizeFirstLetter(category)}
     </span>

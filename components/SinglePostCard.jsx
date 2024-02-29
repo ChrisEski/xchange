@@ -22,7 +22,7 @@ const SinglePostCard = ({ post }) => {
         <Link href={`/${category}/${slug}`}>
           <Image
             src={featuredImage}
-            alt="Article image"
+            alt={title}
             style={{ objectFit: "cover" }}
             fill
             className="transform hover:scale-110 transition-transform duration-300"

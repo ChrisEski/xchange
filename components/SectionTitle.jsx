@@ -6,16 +6,8 @@ import { Button } from "@/components/ui/button";
 const SectionTitle = ({ category, altTitle, viewAll, related }) => {
   const capitalizedCategory = capitalizeFirstLetter(category);
 
-  let sectionTitle;
-  if (related) {
-    sectionTitle = "Related Articles";
-  } else {
-    if (category) {
-      sectionTitle = capitalizedCategory;
-    } else {
-      sectionTitle = altTitle;
-    }
-  }
+  const sectionTitle = category ? `${capitalizedCategory} Articles` : altTitle;
+
   return (
     <div>
       <div className="flex justify-between items-center">
