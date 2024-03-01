@@ -1,0 +1,36 @@
+    User Authentication:
+        /api/auth/signup - POST: Create a new user account.
+        /api/auth/login - POST: Log in with existing credentials.
+        /api/auth/logout - POST: Log out the current user.
+        /api/auth/user - GET: Get details of the currently logged-in user.
+
+    Post Management:
+        /api/posts - GET: Get all posts.
+        /api/posts/:slug - GET: Get a specific post by Slug.
+        /api/posts/categories/:category - GET: Get all posts under a specific category.
+        /api/posts - POST: Create a new post.
+        /api/posts/:slug - PUT: Update an existing post by Slug.
+        /api/posts/:slug - DELETE: Delete an existing post by Slug.
+
+    User Profile:
+        /api/users/:id/posts - GET: Get all posts by a specific user.
+        /api/users/:id - GET: Get user details by ID.
+        /api/users/:id - PUT: Update user details by ID.
+        /api/users/:id - DELETE: Delete user account by ID.
+
+    Comments:
+        /api/posts/:id/comments - GET: Get all comments for a specific post.
+        /api/posts/:id/comments - POST: Add a new comment to a post.
+        /api/posts/:id/comments/:commentId - PUT: Update a comment.
+        /api/posts/:id/comments/:commentId - DELETE: Delete a comment.
+
+    Categories:
+        /api/categories - GET: Get all categories.
+        XXX /api/categories/:category - GET: Get all posts under a specific category. XXX
+        XXX /api/categories/:id/posts - GET: Get all posts under a specific category. XXX
+
+    Search:
+        /api/search?q=query - GET: Search posts by query.
+
+    Pagination:
+        Allow pagination parameters like page and limit in GET requests for posts to support pagination.

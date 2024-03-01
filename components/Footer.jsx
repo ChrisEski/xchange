@@ -22,8 +22,8 @@ const Footer = () => {
               XCHANGE
             </Link>
             <p className="mt-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sit facilis tempore
-              necessitatibus deleniti veritatis labore.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit sit facilis
+              tempore necessitatibus deleniti veritatis labore.
             </p>
           </div>
           <div>
@@ -42,7 +42,9 @@ const Footer = () => {
             <ul>
               {navLinks.map((link) => (
                 <li key={link.title}>
-                  <Link href={link.path}>{link.title}</Link>
+                  <Link href={link.path === "/" ? "/" : `/posts/categories${link.path}`}>
+                    {link.title}
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -16,9 +16,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useEffect, useState } from "react";
 import { getInitials } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const NavAccount = ({ session }) => {
   const [sessionUser, setSessionUser] = useState({});
+  const router = useRouter();
 
   useEffect(() => {
     const fetchSessionUser = async (userId) => {
@@ -33,7 +35,7 @@ const NavAccount = ({ session }) => {
     fetchSessionUser("65dbf993cfb0106d747d6898");
   }, []);
 
-  const { firstName, lastName, email, avatar } = sessionUser;
+  const { firstName, lastName, email, avatar, username } = sessionUser;
   const userInitials = firstName && lastName ? getInitials(firstName, lastName) : null;
 
   return (
@@ -59,11 +61,13 @@ const NavAccount = ({ session }) => {
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <User className="mr-2 h-4 w-4" />
-                <span>Account Dashboard</span>
+                <span onClick={() => router.push(`/account/${username}`)}>Account Dashboard</span>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Plus className="mr-2 h-4 w-4" />
-                <span>New article</span>
+                <span onClick={() => router.push(`/account/${username}/create-post`)}>
+                  New article
+                </span>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />

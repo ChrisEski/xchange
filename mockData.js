@@ -33,7 +33,7 @@ export const posts = [
     featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
-    category: "travelling",
+    category: "traveling",
   },
   {
     title: "Title 4",
@@ -45,7 +45,7 @@ export const posts = [
     featuredPost: true,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
-    category: "psycology",
+    category: "psychology",
   },
   {
     title: "Title 5",
@@ -69,7 +69,7 @@ export const posts = [
     featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
-    category: "travelling",
+    category: "traveling",
   },
   {
     title: "Title 7",
@@ -81,7 +81,7 @@ export const posts = [
     featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
-    category: "psycology",
+    category: "psychology",
   },
   {
     title: "Title 8",
@@ -105,7 +105,7 @@ export const posts = [
     featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
-    category: "travelling",
+    category: "traveling",
   },
   {
     title: "Title 10",
@@ -117,7 +117,7 @@ export const posts = [
     featuredPost: false,
     createdAt: "2024-02-26T02:38:10.811Z",
     updatedAt: "2024-02-26T02:38:10.811Z",
-    category: "psycology",
+    category: "psychology",
   },
 ];
 

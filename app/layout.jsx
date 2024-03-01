@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
 export const metadata = {
   title: "Xchange | Blog Site",
   description:
-    "Blog site where users can publish articles and share their thoughts and expreriences about Technology, travelling and psycology.",
+    "Blog site where users can publish articles and share their thoughts and expreriences about Technology, traveling and psychology.",
 };
 
 export default function RootLayout({ children }) {

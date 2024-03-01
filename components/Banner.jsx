@@ -14,7 +14,7 @@ const Banner = async () => {
     <div className="flex flex-col gap-8 px-12 py-16 max-w-[1220px] mx-auto">
       {/* <div className="flex justify-between gap-5"> */}
       <Link
-        href={`/${category}/${slug}`}
+        href={`/posts/${slug}`}
         className="relative rounded-lg overflow-hidden flex-1 min-h-[500px] group"
       >
         {/* ARTICLE IMAGE */}

@@ -1,3 +1,7 @@
+// *GET: Get user details by ID
+// *PUT: Update user details by ID
+// *DELETE: Delete user account by ID
+
 import { NextResponse } from "next/server";
 import { getSingleUser } from "@/lib/data";
 

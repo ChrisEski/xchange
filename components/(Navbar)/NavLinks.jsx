@@ -12,7 +12,8 @@ const NavLinks = () => {
       {navLinks.map((navLink) => (
         <li key={navLink.path}>
           <Link
-            href={navLink.path}
+            // !FIX: Active navlinks based on the post's category and url category
+            href={navLink.path === "/" ? "/" : `/posts/categories/${navLink.path}`}
             className={`${
               navLink.category === params.category ||
               (navLink.category === "home" && params.category === undefined)

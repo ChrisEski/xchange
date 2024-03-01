@@ -31,7 +31,7 @@ export default function Home() {
       </SectionContainer>
       <SectionContainer>
         <SectionPosts
-          category="travelling"
+          category="traveling"
           viewAll={true}
         />
       </SectionContainer>
@@ -40,7 +40,7 @@ export default function Home() {
       </SectionContainer>
       <SectionContainer>
         <SectionPosts
-          category="psycology"
+          category="psychology"
           viewAll={true}
         />
       </SectionContainer>

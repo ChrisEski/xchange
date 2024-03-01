@@ -19,7 +19,7 @@ const SinglePostCard = ({ post }) => {
         {formattedCategory}
       </span>
       <div className="relative h-52 brightness-75 overflow-hidden">
-        <Link href={`/${category}/${slug}`}>
+        <Link href={`/posts/${slug}`}>
           <Image
             src={featuredImage}
             alt={title}
@@ -32,7 +32,7 @@ const SinglePostCard = ({ post }) => {
       <div className="flex-1 details p-3 flex flex-col gap-3 justify-between rounded-b-lg border border-neutral-300 border-t-0">
         <div className="flex flex-col gap-3">
           <span className="text-sm text-neutral-600">Published {formattedDate}</span>
-          <Link href="#">
+          <Link href={`/posts/${slug}`}>
             <h3 className="text-lg font-bold font-display leading-none">{title}</h3>
           </Link>
           <p className="text-sm text-neutral-600">{bodyExcerpt}</p>
