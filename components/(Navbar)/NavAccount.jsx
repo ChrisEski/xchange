@@ -1,5 +1,3 @@
-"use client";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { LogIn } from "lucide-react";
@@ -14,27 +12,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useEffect, useState } from "react";
 import { getInitials } from "@/lib/utils";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { getSingleUser } from "@/lib/data";
 
-const NavAccount = ({ session }) => {
-  const [sessionUser, setSessionUser] = useState({});
-  const router = useRouter();
-
-  useEffect(() => {
-    const fetchSessionUser = async (userId) => {
-      try {
-        const response = await fetch(`/api/users/${userId}`);
-        const user = await response.json();
-        setSessionUser(user);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchSessionUser("65dbf993cfb0106d747d6898");
-  }, []);
-
+const NavAccount = async ({ session }) => {
+  const sessionUser = await getSingleUser("user1");
   const { firstName, lastName, email, avatar, username } = sessionUser;
   const userInitials = firstName && lastName ? getInitials(firstName, lastName) : null;
 
@@ -59,15 +42,17 @@ const NavAccount = ({ session }) => {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <User className="mr-2 h-4 w-4" />
-                <span onClick={() => router.push(`/account/${username}`)}>Account Dashboard</span>
+              <DropdownMenuItem asChild>
+                <Link href={`/account/${username}`}>
+                  <User className="mr-2 h-4 w-4" />
+                  Account Dashboard
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Plus className="mr-2 h-4 w-4" />
-                <span onClick={() => router.push(`/account/${username}/create-post`)}>
+              <DropdownMenuItem asChild>
+                <Link href={`/account/${username}/create-post`}>
+                  <Plus className="mr-2 h-4 w-4" />
                   New article
-                </span>
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />

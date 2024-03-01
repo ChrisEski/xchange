@@ -7,6 +7,7 @@ import { navLinks } from "@/lib/links";
 import { getSingleUser } from "@/lib/data";
 
 const Header = async () => {
+  // const sessionUser = await getSingleUser("user1");
   const session = true;
 
   return (
@@ -20,7 +21,10 @@ const Header = async () => {
         >
           XCHANGE
         </Link>
-        <NavAccount session={session} />
+        <NavAccount
+          session={session}
+          // sessionUser={sessionUser}
+        />
       </section>
       <section>
         {/* SECONDARY SECTION */}
