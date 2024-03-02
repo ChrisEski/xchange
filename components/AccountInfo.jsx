@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
+import { Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-const AccountInfo = ({ visitedUser, isUserAccount }) => {
-  //   const { firstName, lastName, username, email, bio, avatar } = visitedUser;
-
+const AccountInfo = ({ avatar, fullName, username, email, bio, isUserAccount }) => {
   return (
     <div className=" flex-auto flex flex-col max-w-[25%]">
       <div className="relative w-full aspect-square rounded-full overflow-hidden mb-3">
@@ -28,10 +29,9 @@ const AccountInfo = ({ visitedUser, isUserAccount }) => {
             {email}
           </Link>
         </Button>
-        {/* <Label className="mt-[3px]">{email}</Label> */}
       </div>
       <p className="mb-3">{bio}</p>
-      {/* {isUserAccount && <Button variant="default">Edit profile</Button>} */}
+      {isUserAccount && <Button variant="default">Edit profile</Button>}
     </div>
   );
 };
