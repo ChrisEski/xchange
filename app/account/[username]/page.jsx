@@ -25,6 +25,8 @@ const UserPosts = async ({ params }) => {
         {/* ACCOUNT INFO */}
         <AccountInfo
           avatar={avatar}
+          firstName={firstName}
+          lastName={lastName}
           fullName={fullName}
           username={username}
           email={email}

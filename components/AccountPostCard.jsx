@@ -26,7 +26,7 @@ const AccountPostCard = ({ post }) => {
         <span className="text-neutral-600 text-sm">{formattedDate}</span>
         <div className="flex gap-2">
           <Button variant="outline">
-            <Pencil className="mr-2 h-4 w-4" /> Edit article
+            <Pencil className="mr-2 h-4 w-4" /> Edit
           </Button>
           <Button
             variant="outline"

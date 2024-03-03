@@ -1,37 +1,53 @@
 "use client";
-import Image from "next/image";
-import { Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import AccountInfoDisplay from "./AccountInfoDisplay";
+import { useState } from "react";
+import AccountInfoEdit from "./AccountInfoEdit";
 
-const AccountInfo = ({ avatar, fullName, username, email, bio, isUserAccount }) => {
+const AccountInfo = ({
+  avatar,
+  firstName,
+  lastName,
+  fullName,
+  username,
+  email,
+  bio,
+  isUserAccount,
+}) => {
+  const [editMode, setEditMode] = useState(false);
+
+  const handleInfoEdit = (bool) => {
+    setEditMode(bool);
+  };
+
+  const handleSaveInfo = () => {
+    alert("Saved");
+    setEditMode(false);
+  };
   return (
-    <div className=" flex-auto flex flex-col max-w-[25%]">
-      <div className="relative w-full aspect-square rounded-full overflow-hidden mb-3">
-        <Image
-          src={avatar}
-          fill
-          style={{ objectFit: "cover" }}
+    <div className=" flex-auto flex flex-col min-w-[280px] max-w-[25%]">
+      {editMode ? (
+        <AccountInfoEdit
+          avatar={avatar}
+          firstName={firstName}
+          lastName={lastName}
+          fullName={fullName}
+          username={username}
+          email={email}
+          bio={bio}
+          handleSaveButtonClick={handleSaveInfo}
+          handleCancelButtonClick={handleInfoEdit}
         />
-      </div>
-      <span className="font-bold text-2xl">{fullName}</span>
-      <span className="text-xl text-neutral-600">{username}</span>
-      <div className="flex items-center">
-        <Mail className="w-4 mr-2" />
-        <Button
-          variant="link"
-          className="p-0"
-        >
-          <Link
-            href={`mailto:${email}`}
-            className="mb-[3px]"
-          >
-            {email}
-          </Link>
-        </Button>
-      </div>
-      <p className="mb-3">{bio}</p>
-      {isUserAccount && <Button variant="default">Edit profile</Button>}
+      ) : (
+        <AccountInfoDisplay
+          avatar={avatar}
+          fullName={fullName}
+          username={username}
+          email={email}
+          bio={bio}
+          isUserAccount={isUserAccount}
+          handleEditButtonClick={handleInfoEdit}
+        />
+      )}
     </div>
   );
 };
