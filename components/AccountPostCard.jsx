@@ -12,7 +12,7 @@ const AccountPostCard = ({ post }) => {
   return (
     <article className="flex gap-2">
       {/* FIX: ADD DARKER DIV OVER IMAGE */}
-      <div className="relative w-[200px] aspect-[4/3] flex-shrink-0 overflow-hidden border border-neutral-300 rounded-md">
+      <div className="relative w-[200px] aspect-[3/2] flex-shrink-0 overflow-hidden border border-neutral-300 rounded-md">
         <Image
           src={featuredImage}
           fill

@@ -2,13 +2,16 @@ import Link from "next/link";
 import NavSocials from "./NavSocials";
 import NavAccount from "./NavAccount";
 import NavLinks from "./NavLinks";
+// import { auth } from "@/auth";
 import ThemeToggleBtn from "../ui/themeToggleBtn";
 import { navLinks } from "@/lib/links";
 import { getSingleUser } from "@/lib/data";
 
 const Header = async () => {
   // const sessionUser = await getSingleUser("user1");
-  const session = true;
+  const testSession = true;
+  // const session = await auth();
+  // console.log("Session in Header:", session);
 
   return (
     <header className="bg-white">
@@ -22,7 +25,7 @@ const Header = async () => {
           XCHANGE
         </Link>
         <NavAccount
-          session={session}
+          testSession={testSession}
           // sessionUser={sessionUser}
         />
       </section>

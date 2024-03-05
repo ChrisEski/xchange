@@ -1,5 +1,5 @@
 const AccountLayout = ({ children }) => {
-  return <main>{children}</main>;
+  return <main className="">{children}</main>;
 };
 
 export default AccountLayout;

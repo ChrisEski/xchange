@@ -16,14 +16,14 @@ import { getInitials } from "@/lib/utils";
 import Link from "next/link";
 import { getSingleUser } from "@/lib/data";
 
-const NavAccount = async ({ session }) => {
+const NavAccount = async ({ testSession }) => {
   const sessionUser = await getSingleUser("user1");
   const { firstName, lastName, email, avatar, username } = sessionUser;
   const userInitials = firstName && lastName ? getInitials(firstName, lastName) : null;
 
   return (
     <div className="min-w-[120px] flex justify-end items-center">
-      {session ? (
+      {testSession ? (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Avatar className="cursor-pointer">

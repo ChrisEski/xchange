@@ -15,7 +15,7 @@ const UserPosts = async ({ params }) => {
   // Check if the account displayed is the logged in user's account
   const isUserAccount = loggedInUser?.username === params?.username;
   return (
-    <section className="flex flex-col gap-12 px-12 py-16 max-w-[1220px] mx-auto">
+    <section className="flex flex-col gap-12">
       <div className="flex justify-between items-center">
         <h1 className="font-display font-bold text-5xl">
           {isUserAccount ? "Account Dashboard" : `${params.username}'s Account`}
