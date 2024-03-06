@@ -41,20 +41,7 @@ const PublicPage = () => {
           <code className="bg-neutral-700 rounded-[0.3rem] px-2 py-1 text-white">{`<User not found>`}</code>{" "}
           message will be displayed.
         </p>
-        <div>
-          {isSignedIn ? (
-            <div>
-              <div>{user.fullName}</div>
-              <div>
-                <Button variant="outline">
-                  <SignOutButton />
-                </Button>
-              </div>
-            </div>
-          ) : (
-            <div>No user found</div>
-          )}
-        </div>
+        <div>{isSignedIn ? <div>{user.fullName}</div> : <div>No user found</div>}</div>
       </div>
     </div>
   );
