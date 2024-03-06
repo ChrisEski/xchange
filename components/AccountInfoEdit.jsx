@@ -22,6 +22,7 @@ const AccountInfoEdit = ({
       <div className="flex flex-col gap-3">
         <div className="relative w-full aspect-square rounded-full overflow-hidden mb-3">
           <Image
+            alt={fullName}
             src={avatar}
             fill
             style={{ objectFit: "cover" }}

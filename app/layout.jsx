@@ -3,6 +3,8 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Script from "next/script";
 import Header from "@/components/(Navbar)/Header";
+import GlobalContainer from "@/components/GlobalContainer";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -24,16 +26,24 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className="h-100"
-    >
-      <body className="font-body flex flex-col min-h-screen">
-        <Header />
-        {children}
-        <Footer />
-      </body>
-      <Script src="https://kit.fontawesome.com/edbd25a9bd.js"></Script>
-    </html>
+    <ClerkProvider>
+      <html
+        lang="en"
+        className="border-4 border-blue-500"
+        // className="h-100"
+      >
+        <body
+          className="border-4 border-red-500"
+          //  className="font-body flex flex-col min-h-screen"
+        >
+          <Header />
+          <main className="border-4 border-yellow-500">
+            <GlobalContainer>{children}</GlobalContainer>
+          </main>
+          <Footer />
+        </body>
+        <Script src="https://kit.fontawesome.com/edbd25a9bd.js"></Script>
+      </html>
+    </ClerkProvider>
   );
 }

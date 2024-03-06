@@ -29,7 +29,7 @@ const AccountPosts = ({ username, isUserAccount }) => {
     };
 
     fetchPosts(username);
-  }, []);
+  }, [username]);
   return (
     <div className="border border-neutral-300 rounded-lg flex-auto p-4 flex flex-col gap-5">
       <div className="flex justify-between items-center">
@@ -42,7 +42,10 @@ const AccountPosts = ({ username, isUserAccount }) => {
       </div>
       <div className="flex flex-col gap-3">
         {userPosts.map((post) => (
-          <AccountPostCard post={post} />
+          <AccountPostCard
+            post={post}
+            key={post._id}
+          />
         ))}
       </div>
       <Pagination>

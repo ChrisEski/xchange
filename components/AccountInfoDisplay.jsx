@@ -17,13 +17,14 @@ const AccountInfoDisplay = ({
     <>
       <div className="relative w-full aspect-square rounded-full overflow-hidden mb-3">
         <Image
+          alt={fullName}
           src={avatar}
           fill
           style={{ objectFit: "cover" }}
         />
       </div>
       <span className="font-bold text-2xl">{fullName}</span>
-      <span className="text-xl text-neutral-600">{username}</span>
+      <span className="text-xl text-neutral-700">{username}</span>
       <div className="flex items-center">
         <Mail className="w-4 mr-2" />
         <Button
