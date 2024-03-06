@@ -38,7 +38,9 @@ export default function RootLayout({ children }) {
         >
           <Header />
           <main className="border-4 border-yellow-500">
-            <GlobalContainer>{children}</GlobalContainer>
+            {/* <GlobalContainer> */}
+            {children}
+            {/* </GlobalContainer> */}
           </main>
           <Footer />
         </body>

@@ -5,6 +5,10 @@
 // import SectionPosts from "@/components/SectionPosts";
 // import SectionSocials from "@/components/SectionSocials";
 
+import Banner from "@/components/Banner";
+import SectionContainer from "@/components/SectionContainer";
+import SectionNewsletter from "@/components/SectionNewsletter";
+
 export default function Home() {
   return (
     // <main className="flex-1">
@@ -46,7 +50,12 @@ export default function Home() {
     //   </SectionContainer>
     // </main>
     <div>
-      <h1>Home Page</h1>
+      <SectionContainer>
+        <Banner />
+      </SectionContainer>
+      <SectionContainer bgColor="bg-section">
+        <SectionNewsletter />
+      </SectionContainer>
     </div>
   );
 }
