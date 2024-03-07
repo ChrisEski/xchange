@@ -12,6 +12,6 @@ export async function GET(request) {
     const post = await getPosts(limit);
     return NextResponse.json(post);
   } catch (error) {
-    console.log(error);
+    return NextResponse.json("Error fetching post(s):", error);
   }
 }
