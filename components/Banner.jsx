@@ -1,34 +1,33 @@
 "use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
-import { capitalizeFirstLetter, createExcerpt, formatDate } from "@/lib/utils";
+import { createExcerpt, formatDate } from "@/lib/utils";
 import CategoryLabel from "./CategoryLabel";
-import { getLastPost, getPosts } from "@/lib/data";
 import { useEffect, useState } from "react";
 import BannerLoader from "./BannerLoader";
 
 const Banner = () => {
   const [post, setPost] = useState(null);
-  // const [lastPost] = await getPosts(1);
-  // const { title, body, slug, category, author, featuredImage, createdAt } = lastPost;
-  // const { firstName, lastName } = author;
 
   useEffect(() => {
-    const fetchLatestPost = async () => {
+    const fetchLatestPost = async (numOfPosts) => {
       try {
-        const response = await fetch("http://localhost:3000/api/posts/last");
+        const response = await fetch(`http://localhost:3000/api/posts?limit=${numOfPosts}`, {
+          cache: "no-store",
+        });
 
         if (!response.ok) throw Error("Error fetching latest post");
 
         const data = await response.json();
-        setPost(data);
+        setPost(data[0]);
       } catch (error) {
         console.log(error);
       }
     };
 
-    fetchLatestPost();
+    fetchLatestPost(1);
   }, []);
 
   if (!post) return <BannerLoader />;
@@ -53,11 +52,8 @@ const Banner = () => {
               className="transform transition-transform duration-300 group-hover:scale-110"
             />
           </div>
-          <div
-            // className="absolute inset-0 bg-black opacity-45"
-            className="absolute inset-0 bg-gradient-to-b from-transparent to-black"
-          ></div>{" "}
           {/* Darkening overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>{" "}
         </div>
 
         {/* ARTICLE INFO */}
