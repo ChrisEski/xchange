@@ -6,7 +6,7 @@ const SectionPosts = async ({ category, viewAll }) => {
   const posts = await getSectionPosts(3, category);
 
   return (
-    <div className="flex flex-col gap-8 px-12 py-16 max-w-[1220px] mx-auto">
+    <div className="flex flex-col gap-8 py-16 section-content">
       <SectionTitle
         related={true}
         category={category}

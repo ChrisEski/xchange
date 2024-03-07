@@ -5,7 +5,7 @@ import SectionTitle from "./SectionTitle";
 const SectionFeatured = async () => {
   const posts = await getFeaturedPosts();
   return (
-    <div className="flex flex-col gap-8 px-12 py-16 max-w-[1220px] mx-auto">
+    <div className="flex flex-col gap-8 py-16 section-content">
       <SectionTitle
         category=""
         altTitle="Don't Miss"

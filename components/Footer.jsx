@@ -86,7 +86,7 @@ const Footer = () => {
     // </footer>
     <footer className="border-4 border-green-500">
       {/* Footer container */}
-      <div className="border-4 border-black max-w-[1220px] mx-auto p-12">Footer</div>
+      <div className="border-4 border-black section-content">Footer</div>
     </footer>
   );
 };

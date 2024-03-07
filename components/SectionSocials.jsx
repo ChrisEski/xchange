@@ -4,7 +4,7 @@ import { socialLinks } from "@/lib/links";
 
 const SectionSocials = () => {
   return (
-    <div className="px-12 py-16 max-w-[1220px] mx-auto flex justify-between items-center">
+    <div className="section-content flex justify-between items-center">
       <div>
         <h3 className="font-display font-bold text-4xl">Stay connected. Stay informed.</h3>
         <p className="text-xl mt-2">Check out our social media and be up to date</p>

@@ -6,6 +6,7 @@ import { capitalizeFirstLetter, createExcerpt, formatDate } from "@/lib/utils";
 import CategoryLabel from "./CategoryLabel";
 import { getLastPost, getPosts } from "@/lib/data";
 import { useEffect, useState } from "react";
+import BannerLoader from "./BannerLoader";
 
 const Banner = () => {
   const [post, setPost] = useState(null);
@@ -30,12 +31,13 @@ const Banner = () => {
     fetchLatestPost();
   }, []);
 
-  if (!post) return null;
+  if (!post) return <BannerLoader />;
+
   const { slug, featuredImage, title, category, createdAt, body, author } = post;
   const { firstName, lastName } = author;
 
   return (
-    <div className="border-4 border-black flex flex-col gap-8 p-12 max-w-[1220px] mx-auto">
+    <div className="border-4 border-black flex flex-col gap-8 section-content">
       <Link
         href={`/posts/${slug}`}
         className="relative rounded-lg overflow-hidden flex-1 min-h-[500px] group"

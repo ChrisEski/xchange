@@ -5,7 +5,7 @@ import { User } from "@/lib/models";
 
 export async function GET(request, { params }) {
   try {
-    // !FIX: FETCH POST TO ADD LIMIT AND SKIP, NOT USER
+    // FIXME: FETCH POST TO ADD LIMIT AND SKIP, NOT USER
     const { username } = params;
     const user = await User.findOne({ username: username }).populate("posts");
     const posts = await user.posts;
