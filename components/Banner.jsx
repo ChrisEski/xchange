@@ -15,7 +15,7 @@ const Banner = () => {
     const fetchLatestPost = async (numOfPosts) => {
       try {
         const response = await fetch(`http://localhost:3000/api/posts?limit=${numOfPosts}`, {
-          cache: "no-store",
+          revalidate: 1000,
         });
 
         if (!response.ok) throw Error("Error fetching latest post");
