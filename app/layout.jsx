@@ -5,6 +5,9 @@ import Script from "next/script";
 import Header from "@/components/(Navbar)/Header";
 import GlobalContainer from "@/components/GlobalContainer";
 import { ClerkProvider } from "@clerk/nextjs";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
 
 const lato = Lato({
   subsets: ["latin"],

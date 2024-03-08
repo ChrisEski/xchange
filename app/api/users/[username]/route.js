@@ -9,7 +9,7 @@ export async function GET(request, { params }) {
   try {
     const { username } = params;
     const user = await getSingleUser(username);
-    console.log("User from API:", typeof user);
+    // console.log("User from API:", typeof user);
     // console.log("User from API:", user);
     return NextResponse.json(user);
   } catch (error) {

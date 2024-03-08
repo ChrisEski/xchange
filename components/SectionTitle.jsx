@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const SectionTitle = ({ category, altTitle, viewAll, related }) => {
+const SectionTitle = ({ category, altTitle, viewAll }) => {
   const capitalizedCategory = capitalizeFirstLetter(category);
 
   const sectionTitle = category ? `${capitalizedCategory} Articles` : altTitle;
@@ -13,7 +13,7 @@ const SectionTitle = ({ category, altTitle, viewAll, related }) => {
       <div className="flex justify-between items-center">
         <h2 className="font-display font-bold text-5xl dark:text-white">{sectionTitle}</h2>
         {viewAll && (
-          <Link href="#">
+          <Link href={`/posts/categories/${category}`}>
             <Button
               variant="link"
               className="font-display font-bold"
@@ -23,7 +23,7 @@ const SectionTitle = ({ category, altTitle, viewAll, related }) => {
           </Link>
         )}
       </div>
-      <div className="h-1 bg-red-600 w-[10%] mt-2"></div>
+      <div className="h-1 bg-red-600 w-[10%] min-w-[40px] mt-2"></div>
     </div>
   );
 };

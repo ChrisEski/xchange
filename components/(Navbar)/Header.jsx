@@ -1,5 +1,7 @@
 import NavSocials from "./NavSocials";
 import NavAccount from "./NavAccount";
+import NavLinks from "./NavLinks";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -7,9 +9,15 @@ const Header = () => {
       {/* Header container */}
       <div className="border-4 border-black max-w-[1220px] mx-auto px-12 py-4 flex justify-between items-center">
         <NavSocials />
-        <div className="font-black text-4xl">Xchange</div>
+        <Link
+          href="/"
+          className="font-black text-4xl"
+        >
+          Xchange
+        </Link>
         <NavAccount />
       </div>
+      <NavLinks />
     </header>
   );
 };
