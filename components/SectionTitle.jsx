@@ -3,10 +3,21 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const SectionTitle = ({ category, altTitle, viewAll }) => {
+const SectionTitle = ({ category, altTitle, viewAll, related }) => {
   const capitalizedCategory = capitalizeFirstLetter(category);
 
-  const sectionTitle = category ? `${capitalizedCategory} Articles` : altTitle;
+  // const sectionTitle = category ? `${capitalizedCategory} Articles` : altTitle;
+
+  let sectionTitle;
+  if (related) {
+    sectionTitle = "Related Articles";
+  } else {
+    if (category) {
+      sectionTitle = `${capitalizedCategory} Articles`;
+    } else {
+      sectionTitle = altTitle;
+    }
+  }
 
   return (
     <div>

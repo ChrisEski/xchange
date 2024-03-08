@@ -23,6 +23,7 @@ export default function Home() {
         <SectionPosts
           category="latest"
           viewAll={false}
+          related={false}
         />
       </SectionContainer>
 
@@ -34,6 +35,7 @@ export default function Home() {
         <SectionPosts
           category="technology"
           viewAll={true}
+          related={false}
         />
       </SectionContainer>
 
@@ -45,6 +47,7 @@ export default function Home() {
         <SectionPosts
           category="traveling"
           viewAll={true}
+          related={false}
         />
       </SectionContainer>
 
@@ -56,6 +59,7 @@ export default function Home() {
         <SectionPosts
           category="psychology"
           viewAll={true}
+          related={false}
         />
       </SectionContainer>
     </div>

@@ -2,15 +2,15 @@ import { getSectionPosts } from "@/lib/data";
 import SectionTitle from "./SectionTitle";
 import SinglePostCard from "./SinglePostCard";
 
-const SectionPosts = async ({ category, viewAll }) => {
+const SectionPosts = async ({ category, viewAll, urlParams, related }) => {
   const posts = await getSectionPosts(3, category);
 
   return (
     <div className="border-4 border-black flex flex-col gap-8 section-content">
       <SectionTitle
-        related={true}
         category={category}
         viewAll={viewAll}
+        related={related}
       />
 
       <div className="cards grid grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))] gap-5">

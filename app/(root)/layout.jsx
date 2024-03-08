@@ -1,5 +1,5 @@
 import { Lato, Playfair_Display } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Footer from "@/components/Footer";
 import Script from "next/script";
 import Header from "@/components/(Navbar)/Header";

@@ -9,6 +9,7 @@ import SectionPosts from "@/components/SectionPosts";
 
 const Article = async ({ params }) => {
   const { slug } = params;
+
   const post = await getSinglePost(slug);
   const { title, body, author, featuredImage, category, createdAt } = post;
   const { firstName, lastName, avatar, isAdmin } = author;
@@ -59,6 +60,7 @@ const Article = async ({ params }) => {
         <SectionPosts
           category={category}
           viewAll={true}
+          related={true}
         />
       </SectionContainer>
     </>

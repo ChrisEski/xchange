@@ -8,3 +8,7 @@
 .section-content {
   @apply p-12 max-w-[1220px] mx-auto;
 }
+
+.cl-formButtonPrimary {
+  @apply bg-neutral-900 hover:bg-neutral-800 text-white;
+}
