@@ -10,6 +10,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
+import { Toaster } from "@/components/ui/toaster";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default function RootLayout({ children }) {
             {/* </GlobalContainer> */}
           </main>
           <Footer />
+          <Toaster />
         </body>
         <Script src="https://kit.fontawesome.com/edbd25a9bd.js"></Script>
       </html>
