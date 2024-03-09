@@ -1,3 +1,5 @@
+export const revalidate = 1800;
+
 import { Lato, Playfair_Display } from "next/font/google";
 import "../globals.css";
 import Footer from "@/components/Footer";
