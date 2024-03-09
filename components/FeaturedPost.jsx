@@ -7,7 +7,7 @@ const FeaturedPost = ({ post }) => {
   const { title, body, slug, author, featuredImage, createdAt, category } = post;
   const formattedBody = createExcerpt(body, 16);
   const formattedCategory = capitalizeFirstLetter(category);
-  const formattedDate = formatDate(createdAt);
+  const formattedDate = formatDate(createdAt, true);
   const { firstName, lastName } = author;
 
   return (

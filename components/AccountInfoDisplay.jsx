@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Mail } from "lucide-react";
+import { Mail, CalendarDays, NotebookPen, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -10,6 +10,8 @@ const AccountInfoDisplay = ({
   username,
   email,
   bio,
+  role,
+  signupDate,
   isUserAccount,
   handleEditButtonClick,
 }) => {
@@ -23,33 +25,52 @@ const AccountInfoDisplay = ({
           style={{ objectFit: "cover" }}
         />
       </div>
-      <span className="font-bold text-2xl">{fullName}</span>
-      <span className="text-xl text-neutral-700">{username}</span>
-      <div className="flex items-center">
-        <Mail className="w-4 mr-2" />
-        <Button
-          variant="link"
-          className="p-0"
-        >
-          <Link
-            href={`mailto:${email}`}
-            className="mb-[3px]"
+      <div className="flex flex-col gap-3">
+        <div className="flex flex-col">
+          <span className="font-semibold text-xl">{fullName}</span>
+          <span className="text-lg">{username}</span>
+        </div>
+
+        <p className="text-neutral-700">{bio}</p>
+
+        <div className="text-sm flex flex-col gap-1">
+          <div className="flex items-center">
+            <Mail className="w-4 h-4 mr-1" />
+            <p>
+              <Link
+                href={`mailto:${email}`}
+                className="hover:underline"
+              >
+                {email}
+              </Link>
+            </p>
+          </div>
+          <div className="flex items-center">
+            <CalendarDays className="w-4 h-4 mr-1" />
+            <p>{signupDate}</p>
+          </div>
+          <div className="flex items-center">
+            <NotebookPen className="w-4 h-4 mr-1" />
+            {/* FIX: FETCH ACTUAL POSTS NUMBER */}
+            <p>xx articles posted</p>
+          </div>
+          <div className="flex items-center">
+            <User className="w-4 h-4 mr-1" />
+            {/* FIX: FETCH ACTUAL POSTS NUMBER */}
+            <p>{role}</p>
+          </div>
+        </div>
+        {isUserAccount && (
+          <Button
+            variant="default"
+            onClick={() => {
+              handleEditButtonClick(true);
+            }}
           >
-            {email}
-          </Link>
-        </Button>
+            Edit profile
+          </Button>
+        )}
       </div>
-      <p className="mb-3">{bio}</p>
-      {isUserAccount && (
-        <Button
-          variant="default"
-          onClick={() => {
-            handleEditButtonClick(true);
-          }}
-        >
-          Edit profile
-        </Button>
-      )}
     </>
   );
 };

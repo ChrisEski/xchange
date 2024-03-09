@@ -37,7 +37,7 @@ const Banner = async () => {
               {post?.title}
             </h3>
             <span className=" text-neutral-300 text-sm mt-2">
-              Published {formatDate(post?.createdAt)}
+              Published {formatDate(post?.createdAt, true)}
             </span>
           </div>
           <p className="text-neutral-300">{createExcerpt(post?.body, 26)}</p>

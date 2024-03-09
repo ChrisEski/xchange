@@ -11,6 +11,8 @@ const AccountInfo = ({
   username,
   email,
   bio,
+  role,
+  signupDate,
   isUserAccount,
 }) => {
   const [editMode, setEditMode] = useState(false);
@@ -44,6 +46,8 @@ const AccountInfo = ({
           username={username}
           email={email}
           bio={bio}
+          role={role}
+          signupDate={signupDate}
           isUserAccount={isUserAccount}
           handleEditButtonClick={handleInfoEdit}
         />

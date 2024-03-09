@@ -25,7 +25,7 @@ import CategoryLabel from "./CategoryLabel";
 
 const SinglePostCard = ({ post }) => {
   const formattedCategory = capitalizeFirstLetter(post?.category);
-  const formattedDate = formatDate(post?.createdAt);
+  const formattedDate = formatDate(post?.createdAt, true);
   const nameInitials = getInitials(post?.author.firstName, post?.author.lastName);
   const bodyExcerpt = createExcerpt(post?.body, 20);
   const role = post?.author.isAdmin ? "Admin" : "Author";

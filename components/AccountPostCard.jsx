@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 const AccountPostCard = ({ post }) => {
   const { featuredImage, body, title, category, createdAt } = post;
-  const formattedDate = formatDate(createdAt);
+  const formattedDate = formatDate(createdAt, true);
 
   return (
     <article className="flex gap-2">

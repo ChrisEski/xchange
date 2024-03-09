@@ -42,7 +42,7 @@ const Article = async ({ params }) => {
                 <span className="">{isAdmin ? "Admin" : "Author"}</span>
               </div>
             </div>
-            <span className="text-neutral-700">{formatDate(createdAt)}</span>
+            <span className="text-neutral-700">{formatDate(createdAt, true)}</span>
           </div>
         </div>
 
