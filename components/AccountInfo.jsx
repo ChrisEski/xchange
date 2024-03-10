@@ -1,7 +1,8 @@
 "use client";
 import AccountInfoDisplay from "./AccountInfoDisplay";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import AccountInfoEdit from "./AccountInfoEdit";
+import Loader from "./Loader";
 
 const AccountInfo = ({
   avatar,
@@ -14,6 +15,7 @@ const AccountInfo = ({
   role,
   signupDate,
   isUserAccount,
+  userPostsCount,
 }) => {
   const [editMode, setEditMode] = useState(false);
 
@@ -40,17 +42,20 @@ const AccountInfo = ({
           handleCancelButtonClick={handleInfoEdit}
         />
       ) : (
-        <AccountInfoDisplay
-          avatar={avatar}
-          fullName={fullName}
-          username={username}
-          email={email}
-          bio={bio}
-          role={role}
-          signupDate={signupDate}
-          isUserAccount={isUserAccount}
-          handleEditButtonClick={handleInfoEdit}
-        />
+        <Suspense fallback={<Loader />}>
+          <AccountInfoDisplay
+            avatar={avatar}
+            fullName={fullName}
+            username={username}
+            email={email}
+            bio={bio}
+            role={role}
+            signupDate={signupDate}
+            isUserAccount={isUserAccount}
+            userPostsCount={userPostsCount}
+            handleEditButtonClick={handleInfoEdit}
+          />
+        </Suspense>
       )}
     </div>
   );

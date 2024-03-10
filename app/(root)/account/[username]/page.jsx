@@ -1,55 +1,49 @@
 // MAKE PAGE LIKE GITHUB'S PROFILE PAGE
-// Show how many posts, users, subscribers, own posts
 
-// !FIX: MAKE SERVER COMPONENT (NOT A PURE DASHBOARD BUT A PROFILE PAGE ACCESSIBLE TO ANYONE), FETCH USER INFO AND USER POSTS INFO HERE AND PASS THE VALUES AS PROPS TO CHILDREN COMPONENTS
-"use client";
-import { useUser } from "@clerk/clerk-react";
-import { useParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { getNewsletterSubscribers, getPosts, getSingleUser, getUsers } from "@/lib/data";
+import { auth } from "@clerk/nextjs";
+
 import AccountInfo from "@/components/AccountInfo";
 import AccountPosts from "@/components/AccountPosts";
-import Loader from "@/components/Loader";
 import { formatDate } from "@/lib/utils";
+import AccountInfoStats from "@/components/AccountInfoStats";
 
-const Profile = () => {
-  const [profileUser, setProfileUser] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-  const { user } = useUser();
-  const params = useParams();
-  const loggedInUsername = user?.username;
+const Account = async ({ params }) => {
   const urlParamsUsername = params.username;
+  // 1. Deconstruct logged in user's id
+  const { userId: loggedInUserId } = auth();
 
-  // Check if the account displayed is the logged in user's account
-  const isUserAccount = loggedInUsername === urlParamsUsername;
+  // 2. Fetch total published posts
+  const allPosts = await getPosts();
 
-  // Check if the account displayed is the Admin's account
-  const isAdminAccount = profileUser?.isAdmin;
+  // 3. Fetch total registered users
+  const allUsers = await getUsers();
 
-  // Fetch the user whose username is in the url (whose profile is displayed)
-  useEffect(() => {
-    const fetchUser = async (username) => {
-      try {
-        const response = await fetch(`http://localhost:3000/api/users/${username}`);
-        const data = await response.json();
-        setProfileUser(data);
-        setIsLoading(false);
-        console.log("Successfully fetched user");
-      } catch (error) {
-        console.log("Error fetching user in profile", error);
-      }
-    };
+  // 4. Fetch total newsletter subscribers
+  const allSubscribers = await getNewsletterSubscribers();
 
-    fetchUser(urlParamsUsername);
-  }, [urlParamsUsername]);
+  // 5. Fetch the user whose username is in the url (whose profile is displayed)
+  const displayedUser = await getSingleUser(urlParamsUsername);
 
-  const { firstName, lastName, username, email, bio, avatar, _id } = profileUser;
+  // 6. Get displayed user's data along with clerkId and posts array
+  const { clerkId, posts, avatar, bio, createdAt, email, firstName, lastName, isAdmin, username } =
+    displayedUser;
+
+  // 7. Check if the account displayed is the logged in user's account
+  const isUserAccount = loggedInUserId === clerkId;
+
+  // 8. Get page stats
+  const totalPostsCount = allPosts.length;
+  const totalUsersCount = allUsers.length;
+  const totalNewsletterSubscribers = allSubscribers.length;
+  const userPostsCount = posts.length;
+
+  // 9. Format data
   const fullName = `${firstName} ${lastName}`;
-  const signupDate = formatDate(profileUser?.createdAt);
-  const role = profileUser?.isAdmin ? "Admin" : "Author";
+  const signupDate = formatDate(createdAt);
+  const role = isAdmin ? "Admin" : "Author";
 
-  return !profileUser || isLoading ? (
-    <Loader />
-  ) : (
+  return (
     <section className="flex flex-col gap-12">
       <div className="flex gap-12">
         {/* ACCOUNT INFO */}
@@ -64,10 +58,16 @@ const Profile = () => {
           role={role}
           signupDate={signupDate}
           isUserAccount={isUserAccount}
+          userPostsCount={userPostsCount}
         />
-
-        <div>
-          {isAdminAccount && <div>App stats go here - total posts/users/subscriptions</div>}
+        <div className="flex flex-col gap-6 flex-auto">
+          {isAdmin && (
+            <AccountInfoStats
+              totalPostsCount={totalPostsCount}
+              totalUsersCount={totalUsersCount}
+              totalNewsletterSubscribers={totalNewsletterSubscribers}
+            />
+          )}
 
           {/* USER'S POSTS & STATISTICS*/}
           <AccountPosts
@@ -80,4 +80,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Account;

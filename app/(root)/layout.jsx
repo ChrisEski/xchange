@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
           //  className="font-body flex flex-col min-h-screen"
         >
           <Header />
-          <main className="border-4 border-yellow-500">
+          <main className="border-4 border-yellow-500 font-body">
             {/* <GlobalContainer> */}
             {children}
             {/* </GlobalContainer> */}

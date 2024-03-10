@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Mail, CalendarDays, NotebookPen, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Loader from "./Loader";
 
 const AccountInfoDisplay = ({
   avatar,
@@ -13,6 +14,7 @@ const AccountInfoDisplay = ({
   role,
   signupDate,
   isUserAccount,
+  userPostsCount,
   handleEditButtonClick,
 }) => {
   return (
@@ -52,7 +54,7 @@ const AccountInfoDisplay = ({
           <div className="flex items-center">
             <NotebookPen className="w-4 h-4 mr-1" />
             {/* FIX: FETCH ACTUAL POSTS NUMBER */}
-            <p>xx articles posted</p>
+            <p>{userPostsCount} articles posted</p>
           </div>
           <div className="flex items-center">
             <User className="w-4 h-4 mr-1" />
