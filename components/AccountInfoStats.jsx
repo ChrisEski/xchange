@@ -1,5 +1,3 @@
-"use client";
-
 const AccountInfoStats = ({ totalPostsCount, totalUsersCount, totalNewsletterSubscribers }) => {
   return (
     <div className="border border-neutral-300 rounded-lg p-4 flex flex-col gap-5">

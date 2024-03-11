@@ -5,8 +5,8 @@ import Image from "next/image";
 import { Pencil, Trash } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const AccountPostCard = ({ post }) => {
-  const { featuredImage, body, title, category, createdAt } = post;
+const AccountPostCard = ({ featuredImage, title, createdAt }) => {
+  // const { featuredImage, body, title, category, createdAt } = post;
   const formattedDate = formatDate(createdAt, true);
 
   return (

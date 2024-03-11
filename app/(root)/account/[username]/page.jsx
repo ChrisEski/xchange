@@ -8,8 +8,13 @@ import AccountPosts from "@/components/AccountPosts";
 import { formatDate } from "@/lib/utils";
 import AccountInfoStats from "@/components/AccountInfoStats";
 
-const Account = async ({ params }) => {
+const Account = async ({ params, searchParams }) => {
   const urlParamsUsername = params.username;
+  const page = searchParams["page"] ?? "1";
+  const limit = searchParams["limit"] ?? "2";
+  const start = (Number(page) - 1) * Number(limit);
+  const end = start + Number(limit);
+
   // 1. Deconstruct logged in user's id
   const { userId: loggedInUserId } = auth();
 

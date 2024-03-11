@@ -1,8 +1,13 @@
 import { authMiddleware } from "@clerk/nextjs";
+const { pathToRegexp, match, parse, compile } = require("path-to-regexp");
+const keys = [];
+const regexp = pathToRegexp("/account/:username", keys);
+console.log(keys);
+console.log(regexp);
 
 export default authMiddleware({
   // Routes that can be accessed while signed out
-  publicRoutes: ["/", "/test/(.*)", "/posts/(.*)", "/api/(.*)", "/account/(.*)", "/api/webhooks"],
+  publicRoutes: ["/", "/test/(.*)", "/posts/(.*)", "/api/(.*)"],
   // Routes that can always be accessed, and have
   // no authentication information
   ignoredRoutes: [],
