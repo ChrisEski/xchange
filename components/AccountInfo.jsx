@@ -3,6 +3,7 @@ import AccountInfoDisplay from "./AccountInfoDisplay";
 import { Suspense, useState } from "react";
 import AccountInfoEdit from "./AccountInfoEdit";
 import Loader from "./Loader";
+import { useRouter } from "next/navigation";
 
 const AccountInfo = ({
   avatar,
@@ -17,6 +18,7 @@ const AccountInfo = ({
   isUserAccount,
   userPostsCount,
 }) => {
+  const router = useRouter();
   const [editMode, setEditMode] = useState(false);
 
   const handleInfoEdit = (bool) => {
@@ -26,6 +28,7 @@ const AccountInfo = ({
   const handleSaveInfo = () => {
     alert("Saved");
     setEditMode(false);
+    router.refresh();
   };
   return (
     <div className=" flex-auto flex flex-col min-w-[280px] max-w-[25%]">

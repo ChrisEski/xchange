@@ -4,7 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Pencil } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { Info } from "lucide-react";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const AccountInfoEdit = ({
   avatar,
@@ -18,7 +21,7 @@ const AccountInfoEdit = ({
   handleSaveButtonClick,
 }) => {
   return (
-    <div className="flex flex-col gap-3">
+    <form className="flex flex-col gap-3">
       <div className="flex flex-col gap-3">
         <div className="relative w-full aspect-square rounded-full overflow-hidden mb-3">
           <Image
@@ -27,16 +30,6 @@ const AccountInfoEdit = ({
             fill
             style={{ objectFit: "cover" }}
           />
-
-          <div className="absolute inset-0 w-full h-full flex justify-center items-center bg-neutral-500/70 rounded-full border-4 border-dashed border-neutral-200">
-            <Button
-              variant="outline"
-              className="gap-2 bg-transparent text-white font-medium"
-              onClick={() => alert("Editing avatar")}
-            >
-              <Pencil className="h-4 w-4" /> Edit avatar
-            </Button>
-          </div>
         </div>
         <div className="grid w-full max-w-sm items-center gap-1.5">
           <Label
@@ -49,6 +42,7 @@ const AccountInfoEdit = ({
             type="text"
             id="firstName"
             defaultValue={firstName}
+            name={firstName}
           />
         </div>
         <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -62,34 +56,10 @@ const AccountInfoEdit = ({
             type="text"
             id="lastName"
             defaultValue={lastName}
+            name="lastName"
           />
         </div>
-        <div className="grid w-full max-w-sm items-center gap-1.5">
-          <Label
-            htmlFor="username"
-            className="font-semibold"
-          >
-            Username
-          </Label>
-          <Input
-            type="text"
-            id="username"
-            defaultValue={username}
-          />
-        </div>
-        <div className="grid w-full max-w-sm items-center gap-1.5">
-          <Label
-            htmlFor="email"
-            className="font-semibold"
-          >
-            Email
-          </Label>
-          <Input
-            type="text"
-            id="email"
-            defaultValue={email}
-          />
-        </div>
+
         <div className="grid w-full max-w-sm items-center gap-1.5">
           <Label
             htmlFor="bio"
@@ -100,12 +70,14 @@ const AccountInfoEdit = ({
           <Textarea
             id="bio"
             defaultValue={bio}
+            name="bio"
           />
         </div>
       </div>
       <div className="flex gap-2">
         <Button
           variant=""
+          type="submit"
           onClick={handleSaveButtonClick}
         >
           Save
@@ -119,7 +91,16 @@ const AccountInfoEdit = ({
           Cancel
         </Button>
       </div>
-    </div>
+      <Separator />
+      <Alert>
+        <Info className="h-4 w-4" />
+        <AlertTitle className="font-semibold italic">Editing more fields</AlertTitle>
+        <AlertDescription className="italic">
+          You can edit your profile image, username and email address by opening your{" "}
+          <span className="font-semibold">"Manage account"</span> dialog window.
+        </AlertDescription>
+      </Alert>
+    </form>
   );
 };
 
