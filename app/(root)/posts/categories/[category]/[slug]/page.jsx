@@ -6,13 +6,14 @@ import Image from "next/image";
 import CategoryLabel from "@/components/CategoryLabel";
 import SectionContainer from "@/components/SectionContainer";
 import SectionPosts from "@/components/SectionPosts";
+import Link from "next/link";
 
 const Article = async ({ params }) => {
   const { slug } = params;
 
   const post = await getSinglePost(slug);
   const { title, body, author, featuredImage, category, createdAt } = post;
-  const { firstName, lastName, avatar, isAdmin } = author;
+  const { username, firstName, lastName, avatar, isAdmin } = author;
   const authorInitials = getInitials(firstName, lastName);
 
   return (
@@ -36,9 +37,15 @@ const Article = async ({ params }) => {
                 <AvatarFallback>{authorInitials}</AvatarFallback>
               </Avatar>
               <div className="text-neutral-700 flex flex-col">
-                <span className="font-bold text-black">
-                  By {firstName} {lastName}
-                </span>
+                <Link
+                  href={`/profile/${username}`}
+                  className="font-bold text-black"
+                >
+                  By{" "}
+                  <span className="hover:underline">
+                    {firstName} {lastName}
+                  </span>
+                </Link>
                 <span className="">{isAdmin ? "Admin" : "Author"}</span>
               </div>
             </div>

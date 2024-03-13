@@ -81,10 +81,16 @@ const SinglePostCard = ({ post }) => {
               <AvatarFallback>{nameInitials}</AvatarFallback>
             </Avatar>
             <div className="text-sm text-neutral-700 flex flex-col">
-              <span className="font-bold text-black">
+              <Link
+                href={`/profile/${post?.author.username}`}
+                className="font-bold text-black"
+              >
                 {/* Full Name */}
-                By {post?.author.firstName} {post?.author.lastName}
-              </span>
+                By{" "}
+                <span className="hover:underline">
+                  {post?.author.firstName} {post?.author.lastName}
+                </span>
+              </Link>
               {/* Role */}
               <span className="text-sm">{role}</span>
             </div>

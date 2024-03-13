@@ -14,8 +14,29 @@
 //   SelectValue,
 // } from "@/components/ui/select";
 
-const CreatePost = () => {
-  return (
+import { auth } from "@clerk/nextjs";
+import { notFound } from "next/navigation";
+import { getSingleUser } from "@/lib/data";
+
+const CreatePost = async ({ params }) => {
+  const urlParamsUsername = params.username;
+
+  // 1. Deconstruct logged in user's id
+  const { userId: loggedInUserId } = auth();
+
+  // 2. Fetch the user whose username is in the url (whose profile is displayed)
+  const displayedUser = await getSingleUser(urlParamsUsername);
+
+  // 3. Get displayed user's data along with clerkId and posts array
+  const { clerkId, posts, avatar, bio, createdAt, email, firstName, lastName, isAdmin, username } =
+    displayedUser;
+
+  // 4. Check if the account displayed is the logged in user's account
+  const isUserAccount = loggedInUserId === clerkId;
+
+  return !isUserAccount ? (
+    notFound()
+  ) : (
     // <section className="flex flex-col gap-12 px-12 py-16 max-w-[1220px] mx-auto">
     //   <h1 className="font-display font-bold text-5xl">Create a new article</h1>
     //   <form className="flex flex-col gap-12 items-start">

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import AccountPostsGroup from "./AccountPostsGroup";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 const AccountPosts = ({ username, isUserAccount }) => {
   return (
@@ -11,7 +12,7 @@ const AccountPosts = ({ username, isUserAccount }) => {
         <h2 className="font-bold text-xl">Published articles</h2>
         {isUserAccount && (
           <Link
-            href={`/account/${username}/create-post`}
+            href={`/dashboard/${username}/create-post`}
             className={buttonVariants({ variant: "outline" })}
           >
             <Plus className="mr-2 h-4 w-4" /> Create new

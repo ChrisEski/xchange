@@ -18,14 +18,14 @@ const NavAccount = () => {
       <div className="min-w-[140px] flex justify-end items-center">
         {username ? (
           <Link
-            href={`/account/${username}`}
+            href={`/dashboard/${username}`}
             className={`${buttonVariants({ variant: "link" })}`}
           >
             Dashboard
           </Link>
         ) : null}
 
-        <UserButton />
+        <UserButton afterSignOutUrl="/" />
       </div>
     );
   } else {
