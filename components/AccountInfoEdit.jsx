@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { Info } from "lucide-react";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { editPersonalInfo } from "@/lib/actions";
 
 const AccountInfoEdit = ({
   avatar,
@@ -20,8 +21,16 @@ const AccountInfoEdit = ({
   handleCancelButtonClick,
   handleSaveButtonClick,
 }) => {
+  const updateInfoWithUsername = editPersonalInfo.bind(null, username);
+
   return (
-    <form className="flex flex-col gap-3">
+    <form
+      action={(formData) => {
+        updateInfoWithUsername(formData);
+        handleCancelButtonClick();
+      }}
+      className="flex flex-col gap-3"
+    >
       <div className="flex flex-col gap-3">
         <div className="relative w-full aspect-square rounded-full overflow-hidden mb-3">
           <Image
@@ -29,34 +38,6 @@ const AccountInfoEdit = ({
             src={avatar}
             fill
             style={{ objectFit: "cover" }}
-          />
-        </div>
-        <div className="grid w-full max-w-sm items-center gap-1.5">
-          <Label
-            htmlFor="firstName"
-            className="font-semibold"
-          >
-            First Name
-          </Label>
-          <Input
-            type="text"
-            id="firstName"
-            defaultValue={firstName}
-            name={firstName}
-          />
-        </div>
-        <div className="grid w-full max-w-sm items-center gap-1.5">
-          <Label
-            htmlFor="lastName"
-            className="font-semibold"
-          >
-            Last Name
-          </Label>
-          <Input
-            type="text"
-            id="lastName"
-            defaultValue={lastName}
-            name="lastName"
           />
         </div>
 
@@ -74,11 +55,12 @@ const AccountInfoEdit = ({
           />
         </div>
       </div>
+
       <div className="flex gap-2">
         <Button
           variant=""
           type="submit"
-          onClick={handleSaveButtonClick}
+          // onClick={handleSaveButtonClick}
         >
           Save
         </Button>
@@ -96,7 +78,7 @@ const AccountInfoEdit = ({
         <Info className="h-4 w-4" />
         <AlertTitle className="font-semibold italic">Editing more fields</AlertTitle>
         <AlertDescription className="italic">
-          You can edit your profile image, username and email address by opening your{" "}
+          You can edit all other fields by opening your{" "}
           <span className="font-semibold">"Manage account"</span> dialog window.
         </AlertDescription>
       </Alert>
