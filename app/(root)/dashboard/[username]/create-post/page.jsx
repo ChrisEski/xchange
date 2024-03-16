@@ -16,7 +16,7 @@
 
 import { auth } from "@clerk/nextjs";
 import { notFound } from "next/navigation";
-import { getSingleUser } from "@/lib/data";
+import { getSingleUser } from "@/lib/data/posts";
 
 const CreatePost = async ({ params }) => {
   const urlParamsUsername = params.username;

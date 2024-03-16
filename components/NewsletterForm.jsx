@@ -2,8 +2,8 @@
 
 import { Input } from "@/components/ui/input";
 import SubmitButton from "./SubmitButton";
-import { addSubscriber } from "@/lib/actions";
 import { useToast } from "@/components/ui/use-toast";
+import { addSubscriber } from "@/lib/actions";
 
 const NewsletterForm = () => {
   const { toast } = useToast();

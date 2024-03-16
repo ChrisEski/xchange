@@ -1,4 +1,4 @@
-import { getSinglePost } from "@/lib/data";
+import { getSinglePost } from "@/lib/data/posts";
 import { formatDate, getInitials } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 

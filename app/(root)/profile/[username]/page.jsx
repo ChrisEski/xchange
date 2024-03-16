@@ -1,6 +1,6 @@
 // MAKE PAGE LIKE GITHUB'S PROFILE PAGE
 
-import { getNewsletterSubscribers, getPosts, getSingleUser, getUsers } from "@/lib/data";
+import { getNewsletterSubscribers, getPosts, getSingleUser, getUsers } from "@/lib/data/posts";
 import { auth } from "@clerk/nextjs";
 
 import AccountInfo from "@/components/AccountInfo";

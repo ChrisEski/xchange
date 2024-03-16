@@ -1,4 +1,4 @@
-import { getFeaturedPosts, getSectionPosts } from "@/lib/data";
+import { getFeaturedPosts, getSectionPosts } from "@/lib/data/posts";
 import FeaturedPost from "./FeaturedPost";
 import SectionTitle from "./SectionTitle";
 

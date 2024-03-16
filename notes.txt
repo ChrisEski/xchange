@@ -1,0 +1,22 @@
+- pages/
+  - index.js                // Home page
+  - _app.js                 // Next.js app component
+  - _document.js            // Next.js custom document
+  - dashboard/
+    - [username].js         // Dashboard page for each user
+  - profile/
+    - [username].js         // User profile page
+- components/
+  - Layout.js               // Layout component
+  - Header.js               // Header component
+  - Footer.js               // Footer component
+  - UserStats.js            // Component for displaying user stats
+  - UserPosts.js            // Component for displaying user posts
+  - PostCard.js             // Component for displaying a single post card
+- lib/
+  - api/
+    - user.js               // API functions for fetching user data
+    - post.js               // API functions for fetching and managing posts
+  - database.js             // Database connection setup
+- public/
+  - images/                 // Images directory

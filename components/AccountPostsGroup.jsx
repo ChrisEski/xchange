@@ -1,5 +1,5 @@
 // "use client";
-import { getAllPostsByAuthor } from "@/lib/data";
+import { getAllPostsByAuthor } from "@/lib/data/posts";
 import AccountPostCard from "./AccountPostCard";
 
 // import { useEffect, useState } from "react";

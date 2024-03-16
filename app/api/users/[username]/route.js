@@ -1,17 +1,13 @@
-// *GET: Get user details by ID
-// *PUT: Update user details by ID
-// *DELETE: Delete user account by ID
-
+import { connectToDb } from "@/lib/database";
 import { NextResponse } from "next/server";
-import { getSingleUser } from "@/lib/data";
+import { User } from "@/lib/models/Post";
 
 export async function GET(request, { params }) {
   try {
     const { username } = params;
-    const user = await getSingleUser(username);
-    // console.log("User from API:", typeof user);
-    // console.log("User from API:", user);
-    return NextResponse.json(user);
+    await connectToDb();
+    const user = await User.findOne({ username: username }).populate("posts");
+    return Response.json(user);
   } catch (error) {
     console.log(error);
   }

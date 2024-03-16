@@ -1,4 +1,4 @@
-import { getSectionPosts } from "@/lib/data";
+import { getSectionPosts } from "@/lib/data/posts";
 import SectionTitle from "./SectionTitle";
 import SinglePostCard from "./SinglePostCard";
 
