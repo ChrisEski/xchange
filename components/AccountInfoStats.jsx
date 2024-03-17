@@ -1,4 +1,6 @@
-import { getNewsletterSubscribers, getPosts, getUsers } from "@/lib/data/posts";
+import { getPosts } from "@/lib/data/posts";
+import { getNewsletterSubscribers } from "@/lib/data/subscribers";
+import { getUsers } from "@/lib/data/users";
 
 const AccountInfoStats = async () => {
   // 1. Fetch total published posts

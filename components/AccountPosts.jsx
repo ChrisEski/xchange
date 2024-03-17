@@ -5,7 +5,10 @@ import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-const AccountPosts = ({ username, isUserAccount }) => {
+const AccountPosts = () => {
+  let isUserAccount = false;
+  let username = "user2";
+
   return (
     <div className="border border-neutral-300 rounded-lg p-4 flex flex-col gap-5">
       <div className="flex justify-between items-center">
