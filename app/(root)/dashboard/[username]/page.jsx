@@ -1,5 +1,7 @@
+export const dynamic = "force-dynamic";
+
 import AccountInfo from "@/components/(AccountDashboard)/AccountInfo";
-import AdminStats from "@/components/(AccountDashboard)/AccountAdminStats";
+import AccountAdminStats from "@/components/(AccountDashboard)/AccountAdminStats";
 import AccountUserPosts from "@/components/(AccountDashboard)/AccountUserPosts";
 import { fetchAllPosts, fetchUserPosts } from "@/lib/data/posts";
 import { fetchUsers, getSingleUserByUsername } from "@/lib/data/users";
@@ -42,7 +44,7 @@ const DashboardAccount = async ({ params }) => {
         <AccountInfo />
         <div className="flex flex-col gap-6 flex-auto">
           <div>
-            <AdminStats
+            <AccountAdminStats
               totalUserPosts={totalUserPosts}
               totalPosts={totalPosts}
               totalUsers={totalUsers}

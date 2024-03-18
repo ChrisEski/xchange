@@ -3,10 +3,12 @@ import AdminUsers from "./AdminUsers";
 import AdminSubscribers from "./AdminSubscribers";
 import AdminPosts from "./AdminPosts";
 import { useState } from "react";
-import { ChevronDown, ChevronRight, ChevronUp, Eye, EyeOff } from "lucide-react";
+import { ChevronDown, ChevronRight, ChevronUp, Eye, EyeOff, RefreshCw } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import UserPosts from "./UserPosts";
+import { revalidatePath } from "next/cache";
+import { useRouter } from "next/navigation";
 
 const AccountAdminStats = ({
   totalUserPosts,
@@ -17,6 +19,7 @@ const AccountAdminStats = ({
   isUserAccount,
   isAdmin,
 }) => {
+  const router = useRouter();
   const [showPosts, setShowPosts] = useState(false);
   const [showUsers, setShowUsers] = useState(false);
   const [showSubscribers, setShowSubscribers] = useState(false);
@@ -38,22 +41,33 @@ const AccountAdminStats = ({
         <div className="border border-neutral-300 rounded-lg p-4 flex flex-col gap-5">
           <div className="flex justify-between items-center">
             <h2 className="font-bold text-xl">Blog&apos;s overview</h2>
-            <Button
-              onClick={handleShowAllClick}
-              className={!showPosts ? "" : "hidden"}
-              variant="outline"
-            >
-              Show all stats
-              <ChevronDown className="ml-2 mt-1 h-4 w-4" />
-            </Button>
-            <Button
-              onClick={handleHideAllClick}
-              className={showPosts ? "" : "hidden"}
-              variant="outline"
-            >
-              Hide all stats
-              <ChevronUp className="ml-2 mt-1 h-4 w-4" />
-            </Button>
+            <div className="flex gap-3">
+              <Button
+                onClick={handleShowAllClick}
+                className={!showPosts ? "" : "hidden"}
+                variant="outline"
+              >
+                Show all stats
+                <ChevronDown className="ml-2 mt-1 h-4 w-4" />
+              </Button>
+              <Button
+                onClick={handleHideAllClick}
+                className={showPosts ? "" : "hidden"}
+                variant="outline"
+              >
+                Hide all stats
+                <ChevronUp className="ml-2 mt-1 h-4 w-4" />
+              </Button>
+              <Button
+                onClick={() => {
+                  location.reload();
+                }}
+                variant="outline"
+              >
+                Refresh stats
+                <RefreshCw className="ml-2 mt-1 h-4 w-4" />
+              </Button>
+            </div>
           </div>
           <div className="grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-4">
             <div className="border border-neutral-300 px-6 py-3 rounded-md flex flex-col items-center">

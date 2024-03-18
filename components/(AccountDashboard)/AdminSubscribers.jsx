@@ -1,11 +1,14 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import { fetchSubscribers } from "@/lib/data/subscribers";
 import { formatDate } from "@/lib/utils";
-import { CheckCircle2, XCircle } from "lucide-react";
+import { CheckCircle2, RefreshCw, XCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const AdminSubscribers = () => {
+  const router = useRouter();
   const [subscribers, setSubscribers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 

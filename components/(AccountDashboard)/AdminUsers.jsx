@@ -1,4 +1,6 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import { ExternalLink } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
