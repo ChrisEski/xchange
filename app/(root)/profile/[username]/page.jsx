@@ -1,10 +1,10 @@
-import AccountInfo from "@/components/AccountInfo";
-import AccountPosts from "@/components/AccountPosts";
-import AccountInfoStats from "@/components/AccountInfoStats";
+import AccountInfo from "@/components/(AccountDashboard)/AccountInfo";
+import AccountPosts from "@/components/(AccountDashboard)/AccountUserPosts";
+import AccountInfoStats from "@/components/(AccountDashboard)/AccountAdminStats";
 import { getSingleUserByUsername } from "@/lib/data/users";
 import { Suspense } from "react";
 
-const Account = async ({ params, searchParams }) => {
+const ProfileAccount = async ({ params, searchParams }) => {
   const { username } = params;
 
   // 1. Check if displayed user is Admin
@@ -27,4 +27,4 @@ const Account = async ({ params, searchParams }) => {
   );
 };
 
-export default Account;
+export default ProfileAccount;

@@ -2,12 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { createExcerpt, formatDate } from "@/lib/utils";
-import CategoryLabel from "./CategoryLabel";
+import CategoryLabel from "../ui/CategoryLabel";
 import { getPosts } from "@/lib/data/posts";
 
 const Banner = async () => {
   const post = (await getPosts(1))[0];
-  console.log(post.author);
 
   return (
     <div className="border-4 border-black flex flex-col gap-8 section-content">

@@ -1,6 +1,6 @@
 import { getSectionPosts } from "@/lib/data/posts";
 import SectionTitle from "./SectionTitle";
-import SinglePostCard from "./SinglePostCard";
+import SinglePostCard from "../ui/SinglePostCard";
 
 const SectionPosts = async ({ category, viewAll, urlParams, related }) => {
   const posts = await getSectionPosts(3, category);

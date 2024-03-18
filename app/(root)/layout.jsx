@@ -2,10 +2,10 @@ export const revalidate = 1800;
 
 import { Lato, Playfair_Display } from "next/font/google";
 import "../globals.css";
-import Footer from "@/components/Footer";
+import Footer from "@/components/(Footer)/Footer";
 import Script from "next/script";
 import Header from "@/components/(Navbar)/Header";
-import GlobalContainer from "@/components/GlobalContainer";
+import GlobalContainer from "@/components/ui/GlobalContainer";
 import { ClerkProvider } from "@clerk/nextjs";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";

@@ -3,9 +3,9 @@ import { formatDate, getInitials } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import Image from "next/image";
-import CategoryLabel from "@/components/CategoryLabel";
-import SectionContainer from "@/components/SectionContainer";
-import SectionPosts from "@/components/SectionPosts";
+import CategoryLabel from "@/components/ui/CategoryLabel";
+import SectionContainer from "@/components/(Sections)/SectionContainer";
+import SectionPosts from "@/components/(Sections)/SectionPosts";
 import Link from "next/link";
 
 const Article = async ({ params }) => {

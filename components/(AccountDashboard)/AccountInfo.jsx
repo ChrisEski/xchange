@@ -2,17 +2,19 @@
 
 import { formatDate, getInitials } from "@/lib/utils";
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Calendar, NotebookPen, Mail, UploadCloud, User } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Calendar, NotebookPen, Mail, Pen, User, Pencil } from "lucide-react";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "./ui/textarea";
+import { Textarea } from "../ui/textarea";
 
 const AccountInfo = () => {
+  const pathName = usePathname();
+  const canEdit = !pathName.includes("/profile");
   const params = useParams();
   const { username } = params;
 
@@ -34,6 +36,7 @@ const AccountInfo = () => {
           lastName: data.lastName,
           email: data.email,
           username: data.username,
+          password: data.password,
           bio: data.bio,
         });
         setIsLoading(false);
@@ -56,7 +59,7 @@ const AccountInfo = () => {
   ) : (
     // <div>Info</div>
     <div className=" flex-auto flex flex-col gap-3 min-w-[280px] max-w-[25%]">
-      {editMode ? (
+      {canEdit && editMode ? (
         <form className="flex flex-col gap-3">
           <div className="relative w-full aspect-square overflow-hidden">
             <Avatar className="w-full h-full">
@@ -65,21 +68,19 @@ const AccountInfo = () => {
                 {getInitials(displayedUser.firstName, displayedUser.lastName)}
               </AvatarFallback>
             </Avatar>
-            <div className="bg-white/70 absolute inset-0 w-full h-full flex flex-col justify-center items-center rounded-full border-4 border-neutral-700 border-dashed text-neutral-700 hover:bg-white/80">
-              <Label
-                htmlFor="avatar"
-                className="flex flex-col justify-center items-center absolute w-full h-full inset-0 rounded-full cursor-pointer text-2xl"
-              >
-                <UploadCloud className="w-14 h-14 text-neutral-600" />
-                Upload image
-              </Label>
+
+            <Label
+              htmlFor="avatar"
+              className="bg-neutral-800 text-white flex justify-center items-center border border-neutral-400 absolute rounded-full w-[40px] h-[40px] right-0 top-[68%] cursor-pointer"
+            >
+              <Pencil className="w-5 h-5" />
               <Input
                 id="avatar"
                 type="file"
                 className="hidden"
                 name="avatar"
               />
-            </div>
+            </Label>
           </div>
 
           <div className="flex flex-col gap-2">
@@ -145,6 +146,34 @@ const AccountInfo = () => {
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label
+                htmlFor="password"
+                className="font-semibold"
+              >
+                Password
+              </Label>
+              <Input
+                type="password"
+                id="password"
+                name="password"
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="grid w-full max-w-sm items-center gap-1.5">
+              <Label
+                htmlFor="repeatPassword"
+                className="font-semibold"
+              >
+                Repeat Password
+              </Label>
+              <Input
+                type="password"
+                id="repeatPassword"
+                name="repeatPassword"
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="grid w-full max-w-sm items-center gap-1.5">
+              <Label
                 htmlFor="bio"
                 className="font-semibold"
               >
@@ -183,7 +212,10 @@ const AccountInfo = () => {
         <>
           <div className="relative w-full aspect-square overflow-hidden">
             <Avatar className="w-full h-full">
-              <AvatarImage src={displayedUser.avatar} />
+              <AvatarImage
+                src={displayedUser.avatar}
+                className="object-cover"
+              />
               <AvatarFallback>
                 {getInitials(displayedUser.firstName, displayedUser.lastName)}
               </AvatarFallback>
@@ -221,13 +253,16 @@ const AccountInfo = () => {
                 <p>{displayedUser.isAdmin ? "Admin" : "Author"}</p>
               </div>
             </div>
-            <Button
-              onClick={() => {
-                setEditMode(true);
-              }}
-            >
-              Edit account
-            </Button>
+
+            {canEdit && (
+              <Button
+                onClick={() => {
+                  setEditMode(true);
+                }}
+              >
+                Edit account
+              </Button>
+            )}
           </div>
         </>
       )}

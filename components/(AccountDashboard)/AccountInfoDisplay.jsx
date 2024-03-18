@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Mail, CalendarDays, NotebookPen, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Loader from "./Loader";
+import Loader from "../ui/Loader";
 
 const AccountInfoDisplay = ({}) => {
   return (
