@@ -1,5 +1,5 @@
 import { connectToDb } from "@/lib/database";
-import { User } from "@/lib/models/User";
+import { User } from "@/lib/models";
 import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
@@ -7,6 +7,7 @@ export async function GET(request, { params }) {
     const { username } = params;
     await connectToDb();
     const user = await User.findOne({ username: username }).populate("posts");
+    // console.log("User from API:", user);
     return NextResponse.json(user);
   } catch (error) {
     console.log(error);

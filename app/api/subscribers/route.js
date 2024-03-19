@@ -1,5 +1,5 @@
 import { connectToDb } from "@/lib/database";
-import { NewsletterEmail } from "@/lib/models/NewsLetterEmail";
+import { NewsletterEmail } from "@/lib/models";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
