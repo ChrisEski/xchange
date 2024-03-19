@@ -32,28 +32,29 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const showBorders = false;
   return (
     <ClerkProvider>
       <html
         lang="en"
-        className="border-4 border-blue-500"
+        className={`${showBorders && "border-4 border-blue-500"}`}
         // className="h-100"
       >
         <body
-          className="border-4 border-red-500"
+          className={`${showBorders && "border-4 border-red-500"}`}
           //  className="font-body flex flex-col min-h-screen"
         >
           <ThemeProvider
             attribute="class"
             defaultTheme="light"
           >
-            <Header />
-            <main className="border-4 border-yellow-500 font-body">
+            <Header showBorders={showBorders} />
+            <main className={`${showBorders && "border-4 border-yellow-500 "} "font-body"`}>
               {/* <GlobalContainer> */}
               {children}
               {/* </GlobalContainer> */}
             </main>
-            <Footer />
+            <Footer showBorders={showBorders} />
             <Toaster />
           </ThemeProvider>
         </body>

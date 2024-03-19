@@ -14,11 +14,15 @@ import {
 import ThemeToggleBtn from "../ui/themeToggleBtn";
 import { ModeToggle } from "../ui/ModeToggle";
 
-const Header = () => {
+const Header = ({ showBorders }) => {
   return (
-    <header className="border-4 border-green-500">
+    <header className={`${showBorders && "border-4 border-green-500"}`}>
       {/* Header container */}
-      <div className="border-4 border-black max-w-[1220px] mx-auto px-12 py-4 flex justify-between items-center">
+      <div
+        className={`${
+          showBorders && "border-4 border-black "
+        } max-w-[1220px] mx-auto px-12 py-4 flex justify-between items-center`}
+      >
         <NavSocials />
         <Link
           href="/"

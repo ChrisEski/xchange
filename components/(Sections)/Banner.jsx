@@ -5,11 +5,13 @@ import { createExcerpt, formatDate } from "@/lib/utils";
 import CategoryLabel from "../ui/CategoryLabel";
 import { getPosts } from "@/lib/data/posts";
 
-const Banner = async () => {
+const Banner = async ({ showBorders }) => {
   const post = (await getPosts(1))[0];
 
   return (
-    <div className="border-4 border-black flex flex-col gap-8 section-content">
+    <div
+      className={`${showBorders && "border-4 border-black"} flex flex-col gap-8 section-content`}
+    >
       <Link
         href={`/posts/categories/${post?.category}/${post?.slug}`}
         className="relative rounded-lg overflow-hidden flex-1 min-h-[500px] group"

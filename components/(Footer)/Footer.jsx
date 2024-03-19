@@ -1,10 +1,12 @@
 import { navLinks } from "@/lib/links";
 import Link from "next/link";
 
-const Footer = () => {
+const Footer = ({ showBorders }) => {
   return (
-    <footer className="bg-section border-4 border-green-500">
-      <div className="border-4 border-black max-w-[1220px] mx-auto px-12 py-4">
+    <footer className={`${showBorders && "border-4 border-green-500"} bg-section`}>
+      <div
+        className={`${showBorders && "border-4 border-black"} max-w-[1220px] mx-auto px-12 py-4`}
+      >
         <div className="flex justify-between">
           <div className="max-w-[300px]">
             <Link

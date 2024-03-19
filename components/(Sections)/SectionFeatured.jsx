@@ -2,11 +2,15 @@ import { getFeaturedPosts, getSectionPosts } from "@/lib/data/posts";
 import FeaturedPost from "./FeaturedPost";
 import SectionTitle from "./SectionTitle";
 
-const SectionFeatured = async () => {
+const SectionFeatured = async ({ showBorders }) => {
   const posts = await getFeaturedPosts();
 
   return (
-    <div className="flex flex-col gap-8 py-16 section-content border-4 border-black">
+    <div
+      className={`${
+        showBorders && "border-4 border-black"
+      } flex flex-col gap-8 py-16 section-content`}
+    >
       <SectionTitle
         category=""
         altTitle="Don't Miss"

@@ -14,10 +14,11 @@ import SectionPosts from "@/components/(Sections)/SectionPosts";
 import SectionSocials from "@/components/(Sections)/SectionSocials";
 
 export default function Home() {
+  const showBorders = false;
   return (
     <div>
       <SectionContainer>
-        <Banner />
+        <Banner showBorders={showBorders} />
       </SectionContainer>
 
       <SectionContainer>
@@ -25,11 +26,12 @@ export default function Home() {
           category="latest"
           viewAll={false}
           related={false}
+          showBorders={showBorders}
         />
       </SectionContainer>
 
       <SectionContainer bgColor="bg-section">
-        <SectionNewsletter />
+        <SectionNewsletter showBorders={showBorders} />
       </SectionContainer>
 
       <SectionContainer>
@@ -37,11 +39,12 @@ export default function Home() {
           category="technology"
           viewAll={true}
           related={false}
+          showBorders={showBorders}
         />
       </SectionContainer>
 
       <SectionContainer bgColor="bg-section">
-        <SectionSocials />
+        <SectionSocials showBorders={showBorders} />
       </SectionContainer>
 
       <SectionContainer>
@@ -49,11 +52,12 @@ export default function Home() {
           category="traveling"
           viewAll={true}
           related={false}
+          showBorders={showBorders}
         />
       </SectionContainer>
 
       <SectionContainer bgColor="bg-section">
-        <SectionFeatured />
+        <SectionFeatured showBorders={showBorders} />
       </SectionContainer>
 
       <SectionContainer>
@@ -61,6 +65,7 @@ export default function Home() {
           category="psychology"
           viewAll={true}
           related={false}
+          showBorders={showBorders}
         />
       </SectionContainer>
     </div>

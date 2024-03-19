@@ -8,9 +8,13 @@ import {
   faYoutubeSquare,
 } from "@fortawesome/free-brands-svg-icons";
 
-const SectionSocials = () => {
+const SectionSocials = ({ showBorders }) => {
   return (
-    <div className="border-4 border-black section-content flex justify-between items-center">
+    <div
+      className={`${
+        showBorders && "border-4 border-black"
+      } section-content flex justify-between items-center`}
+    >
       <div>
         <h3 className="font-display font-bold text-4xl">Stay connected. Stay informed.</h3>
         <p className="text-xl mt-2">Check out our social media and be up to date</p>

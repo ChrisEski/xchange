@@ -2,11 +2,13 @@ import { getSectionPosts } from "@/lib/data/posts";
 import SectionTitle from "./SectionTitle";
 import SinglePostCard from "../ui/SinglePostCard";
 
-const SectionPosts = async ({ category, viewAll, urlParams, related }) => {
+const SectionPosts = async ({ category, viewAll, urlParams, related, showBorders }) => {
   const posts = await getSectionPosts(3, category);
 
   return (
-    <div className="border-4 border-black flex flex-col gap-8 section-content">
+    <div
+      className={`${showBorders && "border-4 border-black "} flex flex-col gap-8 section-content`}
+    >
       <SectionTitle
         category={category}
         viewAll={viewAll}
