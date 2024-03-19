@@ -11,6 +11,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -42,14 +43,19 @@ export default function RootLayout({ children }) {
           className="border-4 border-red-500"
           //  className="font-body flex flex-col min-h-screen"
         >
-          <Header />
-          <main className="border-4 border-yellow-500 font-body">
-            {/* <GlobalContainer> */}
-            {children}
-            {/* </GlobalContainer> */}
-          </main>
-          <Footer />
-          <Toaster />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+          >
+            <Header />
+            <main className="border-4 border-yellow-500 font-body">
+              {/* <GlobalContainer> */}
+              {children}
+              {/* </GlobalContainer> */}
+            </main>
+            <Footer />
+            <Toaster />
+          </ThemeProvider>
         </body>
         <Script src="https://kit.fontawesome.com/edbd25a9bd.js"></Script>
       </html>

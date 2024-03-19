@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["node_modules/flowbite-react/lib/esm/**/*.js"],
-  darkMode: ["class"],
+  darkMode: "selector",
   content: [
     "./pages/**/*.{js,jsx}",
     "./components/**/*.{js,jsx}",

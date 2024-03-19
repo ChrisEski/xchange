@@ -2,6 +2,17 @@ import NavSocials from "./NavSocials";
 import NavAccount from "./NavAccount";
 import NavLinks from "./NavLinks";
 import Link from "next/link";
+import { Moon, SunDim } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import ThemeToggleBtn from "../ui/themeToggleBtn";
+import { ModeToggle } from "../ui/ModeToggle";
 
 const Header = () => {
   return (
@@ -15,7 +26,11 @@ const Header = () => {
         >
           Xchange
         </Link>
-        <NavAccount />
+        <div className="flex items-center justify-end gap-4">
+          <NavAccount />
+          {/* <ThemeToggleBtn /> */}
+          <ModeToggle />
+        </div>
       </div>
       <NavLinks />
     </header>

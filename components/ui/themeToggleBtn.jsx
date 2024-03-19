@@ -4,7 +4,7 @@ import { Sun, Moon } from "lucide-react";
 
 const ThemeToggleBtn = () => {
   return (
-    <button
+    <span
       id="theme-toggle"
       onClick={toggleTheme}
       type="button"
@@ -12,7 +12,7 @@ const ThemeToggleBtn = () => {
     >
       <Sun id="theme-toggle-dark-icon" />
       <Moon id="theme-toggle-light-icon" />
-    </button>
+    </span>
   );
 };
 
