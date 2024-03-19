@@ -12,7 +12,7 @@ const NewsletterForm = () => {
       action={async (formData) => {
         await addSubscriber(formData);
         document.getElementById("email").value = "";
-        document.getElementById("prompt").classList.toggle("hidden");
+        // document.getElementById("prompt").classList.toggle("hidden");
         toast({
           title: "Successfully registered!",
           description: "Welcome to our newsletter. Thank you for your subscription!",

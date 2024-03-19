@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 
 import { fetchSubscribers } from "@/lib/data/subscribers";
 import { formatDate } from "@/lib/utils";
-import { CheckCircle2, RefreshCw, XCircle } from "lucide-react";
+import { CheckCircle2, Pencil, RefreshCw, Trash2, XCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -22,6 +22,13 @@ const AdminSubscribers = () => {
     getAllSubscribers();
   }, []);
 
+  const handleEditButtonClick = () => {
+    alert("Editing");
+  };
+  const handleDeleteButtonClick = () => {
+    alert("Deleting");
+  };
+
   return (
     <div className="border border-neutral-300 rounded-lg p-4 flex flex-col gap-5">
       <div className="flex justify-between items-center">
@@ -37,7 +44,8 @@ const AdminSubscribers = () => {
             <tr>
               <th className="text-left px-5">Email</th>
               <th className="text-left pr-5">Is user</th>
-              <th className="text-left">Registered</th>
+              <th className="text-left">Registered at</th>
+              <th className="text-left">Actions</th>
             </tr>
           </thead>
           <tbody className="text-sm">
@@ -57,6 +65,11 @@ const AdminSubscribers = () => {
                   )}
                 </td>
                 <td className="">{formatDate(subscriber?.createdAt)}</td>
+                <td>
+                  <button onClick={handleDeleteButtonClick}>
+                    <Trash2 className="w-4 text-red-600" />
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

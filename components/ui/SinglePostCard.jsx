@@ -83,7 +83,7 @@ const SinglePostCard = ({ post }) => {
             <div className="text-sm text-neutral-700 flex flex-col">
               <Link
                 href={`/profile/${post?.author.username}`}
-                className="font-bold text-black"
+                className="text-black"
               >
                 {/* Full Name */}
                 By{" "}

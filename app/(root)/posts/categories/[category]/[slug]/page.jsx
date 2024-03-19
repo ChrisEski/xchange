@@ -9,6 +9,7 @@ import SectionPosts from "@/components/(Sections)/SectionPosts";
 import Link from "next/link";
 
 const Article = async ({ params }) => {
+  const showBorders = false;
   const { slug } = params;
 
   const post = await getSinglePost(slug);
@@ -18,7 +19,9 @@ const Article = async ({ params }) => {
 
   return (
     <>
-      <section className="border-4 border-black flex flex-col gap-12 section-content">
+      <section
+        className={`${showBorders && "border-4 border-black"} flex flex-col gap-12 section-content`}
+      >
         <div className="flex flex-col items-start gap-3">
           <div>
             <CategoryLabel
@@ -39,7 +42,7 @@ const Article = async ({ params }) => {
               <div className="text-neutral-700 flex flex-col">
                 <Link
                   href={`/profile/${username}`}
-                  className="font-bold text-black"
+                  className="text-black"
                 >
                   By{" "}
                   <span className="hover:underline">

@@ -47,6 +47,7 @@ export default function RootLayout({ children }) {
           <ThemeProvider
             attribute="class"
             defaultTheme="light"
+            disableTransitionOnChange
           >
             <Header showBorders={showBorders} />
             <main className={`${showBorders && "border-4 border-yellow-500 "} "font-body"`}>

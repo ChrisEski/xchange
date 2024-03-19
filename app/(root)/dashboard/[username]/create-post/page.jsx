@@ -26,6 +26,9 @@ const CreatePost = () => {
 
   const [displayedUser, setDisplayedUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [title, setTitle] = useState("");
+  const [slug, setSlug] = useState("");
+  const [category, setCategory] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [imageFileName, setImageFileName] = useState("");
 
@@ -44,7 +47,7 @@ const CreatePost = () => {
     getUser(urlParamsUsername);
   }, [urlParamsUsername]);
 
-  function handleChange(e) {
+  function handleFeaturedImageChange(e) {
     // !FIX: CHANGE FILE SIZE VALIDATION
     console.log(e.target.files[[0]]);
     // SIZE CALCULATED IN BYTES (BINARY)
@@ -55,6 +58,17 @@ const CreatePost = () => {
       setImageFile(URL.createObjectURL(e.target.files[0]));
       setImageFileName(e.target.files[[0]].name);
     }
+  }
+
+  function handleTitleChange(event) {
+    // Get the current value of the title input
+    const newTitle = event.target.value;
+    // Update the title state
+    setTitle(newTitle);
+    // Generate the slug from the title
+    const newSlug = newTitle.toLowerCase().replace(/\s+/g, "-");
+    // Update the slug state
+    setSlug(newSlug);
   }
 
   if (!userId || isLoading) {
@@ -86,6 +100,8 @@ const CreatePost = () => {
             name="title"
             placeholder="Your article's descriptive title"
             className="w-full"
+            value={title}
+            onChange={handleTitleChange}
           />
         </div>
 
@@ -104,6 +120,7 @@ const CreatePost = () => {
               name="slug"
               placeholder="the-title-of-my-article"
               className="w-full"
+              defaultValue={slug}
             />
             <p className="text-neutral-600 italic">
               The title of the article visible in the browser's address bar, using only lowercase
@@ -154,7 +171,7 @@ const CreatePost = () => {
               type="file"
               name="featuredImage"
               id="featuredImage"
-              onChange={handleChange}
+              onChange={handleFeaturedImageChange}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
             {imageFile && (
