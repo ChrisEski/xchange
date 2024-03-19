@@ -60,7 +60,7 @@ const AccountInfo = () => {
     // <div>Info</div>
     <div className=" flex-auto flex flex-col gap-3 min-w-[280px] max-w-[25%]">
       {canEdit && editMode ? (
-        <form className="flex flex-col gap-3">
+        <form className="flex flex-col gap-5">
           <div className="relative w-full aspect-square overflow-hidden">
             <Avatar className="w-full h-full">
               <AvatarImage src={displayedUser.avatar} />
@@ -83,7 +83,7 @@ const AccountInfo = () => {
             </Label>
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-5">
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label
                 htmlFor="firstName"
@@ -146,29 +146,43 @@ const AccountInfo = () => {
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label
-                htmlFor="password"
+                htmlFor="currentPassword"
                 className="font-semibold"
               >
-                Password
+                Current Password
               </Label>
               <Input
-                type="password"
-                id="password"
-                name="password"
+                type="currentPassword"
+                id="currentPassword"
+                name="currentPassword"
                 onChange={handleInputChange}
               />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label
-                htmlFor="repeatPassword"
+                htmlFor="newPassword"
                 className="font-semibold"
               >
-                Repeat Password
+                New Password
               </Label>
               <Input
-                type="password"
-                id="repeatPassword"
-                name="repeatPassword"
+                type="newPassword"
+                id="newPassword"
+                name="newPassword"
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="grid w-full max-w-sm items-center gap-1.5">
+              <Label
+                htmlFor="confirmNewPassword"
+                className="font-semibold"
+              >
+                Confirm New Password
+              </Label>
+              <Input
+                type="confirmNewPassword"
+                id="confirmNewPassword"
+                name="confirmNewPassword"
                 onChange={handleInputChange}
               />
             </div>
@@ -222,13 +236,13 @@ const AccountInfo = () => {
             </Avatar>
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             <div className="">
               <p className="font-bold text-xl">{fullName}</p>
               <p>{displayedUser.username}</p>
             </div>
             <p className=" text-neutral-700">{displayedUser.bio}</p>
-            <div className=" text-sm">
+            <div className=" text-sm flex flex-col gap-1">
               <Link
                 href={`mailto:${displayedUser.email}`}
                 className="flex items-center gap-1"

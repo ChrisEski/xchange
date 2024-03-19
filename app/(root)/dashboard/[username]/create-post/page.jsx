@@ -1,11 +1,22 @@
 "use client";
 
 import { useAuth } from "@clerk/clerk-react";
-import { Trash2, UploadCloud } from "lucide-react";
+import { Mail, Send, Trash2, UploadCloud } from "lucide-react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { addArticle } from "@/lib/actions";
 
 const CreatePost = () => {
   const router = useRouter();
@@ -35,7 +46,7 @@ const CreatePost = () => {
 
   function handleChange(e) {
     // !FIX: CHANGE FILE SIZE VALIDATION
-    // console.log(e.target.files[[0]]);
+    console.log(e.target.files[[0]]);
     // SIZE CALCULATED IN BYTES (BINARY)
     if (e.target.files[0].size > 5242880) {
       alert("File bigger than 5MB");
@@ -55,16 +66,80 @@ const CreatePost = () => {
   }
 
   return (
-    <section className="flex flex-col gap-12 px-12 py-16 max-w-[1220px] mx-auto">
+    <div className="flex flex-col gap-12">
       <h1 className="font-display font-bold text-5xl">Create a new article</h1>
-      <form className="flex flex-col gap-12 items-start">Input form</form>
-      <div className="flex flex-col w-[50%] overflow-hidden">
-        <label>Featured image</label>
-        <div className="w-full h-full overflow-hidden">
+      <form
+        action={addArticle}
+        className="flex flex-col gap-12"
+      >
+        {/* TITLE */}
+        <div className="grid w-full items-center gap-1.5">
+          <Label
+            htmlFor="title"
+            className="font-bold"
+          >
+            Title
+          </Label>
+          <Input
+            type="title"
+            id="title"
+            name="title"
+            placeholder="Your article's descriptive title"
+            className="w-full"
+          />
+        </div>
+
+        {/* SLUG & CATEGORY */}
+        <div className="flex items-start gap-5">
+          <div className="grid  items-center gap-1.5 w-[90%]">
+            <Label
+              htmlFor="slug"
+              className="font-bold"
+            >
+              URL address slug
+            </Label>
+            <Input
+              type="slug"
+              id="slug"
+              name="slug"
+              placeholder="the-title-of-my-article"
+              className="w-full"
+            />
+            <p className="text-neutral-600 italic">
+              The title of the article visible in the browser's address bar, using only lowercase
+              words separated by "-"
+            </p>
+          </div>
+          <div className="grid items-center gap-1.5 flex-auto">
+            <Label
+              htmlFor="category"
+              className="font-bold"
+            >
+              Category
+            </Label>
+            <Select
+              id="category"
+              name="category"
+            >
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="technology">Technology</SelectItem>
+                <SelectItem value="traveling">Traveling</SelectItem>
+                <SelectItem value="psychology">Psychology</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
+        {/* FEATURED IMAGE */}
+        <div className="flex flex-col w-full overflow-hidden">
+          <label className="font-bold">Featured image</label>
           <div className="relative w-full aspect-video overflow-hidden">
             {!imageFile && (
-              <label
-                htmlFor="featuredImg"
+              <Label
+                htmlFor="featuredImage"
                 className="absolute border-4 border-dashed border-neutral-700  flex flex-col justify-center items-center text-lg w-full h-full rounded-xl overflow-hidden"
               >
                 <UploadCloud className="w-20 h-20 text-neutral-700" />
@@ -73,12 +148,12 @@ const CreatePost = () => {
                   <span className="font-bold hover:underline text-black">browse</span>
                 </p>
                 <p className="text-neutral-500 text-sm text-center">File size must be up to 20MB</p>
-              </label>
+              </Label>
             )}
-            <input
+            <Input
               type="file"
-              name="featuredImg"
-              id="featuredImg"
+              name="featuredImage"
+              id="featuredImage"
               onChange={handleChange}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
@@ -91,30 +166,53 @@ const CreatePost = () => {
               ></Image>
             )}
           </div>
+          {imageFile && (
+            <div className="flex justify-between items-center py-2 px-1">
+              <p className="text-neutral-700 italic">{imageFileName}</p>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Trash2
+                      className="cursor-pointer w-5 text-neutral-700"
+                      onClick={() => {
+                        setImageFile(null);
+                        setImageFileName("");
+                      }}
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Remove image</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+          )}
         </div>
-        {imageFile && (
-          <div className="flex justify-between items-center py-2 px-1">
-            <p className="text-neutral-700 italic">{imageFileName}</p>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <Trash2
-                    className="cursor-pointer w-5 text-neutral-700"
-                    onClick={() => {
-                      setImageFile(null);
-                      setImageFileName("");
-                    }}
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Remove image</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </div>
-        )}
-      </div>
-    </section>
+
+        {/* BUTTONS */}
+        <div className="flex gap-4">
+          <Button
+            onClick={() => {
+              alert("Submitted");
+              // !FIX: USE NEWLY CREATED ARTICLES DYNAMIC TITLE ROUTE
+              router.push(
+                "http://localhost:3000/posts/categories/technology/mastering-the-art-of-web-development-navigating-the-digital-landscape"
+              );
+            }}
+          >
+            <Send className="mr-2 h-4 w-4" /> Submit article
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => {
+              router.push(`/dashboard/${urlParamsUsername}`);
+            }}
+          >
+            Cancel
+          </Button>
+        </div>
+      </form>
+    </div>
     // <div>Create post page</div>
   );
 };
