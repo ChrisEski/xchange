@@ -15,6 +15,7 @@ export const metadata = {
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
+  const showBorders = true;
   return (
     <ClerkProvider>
       <html lang="en">

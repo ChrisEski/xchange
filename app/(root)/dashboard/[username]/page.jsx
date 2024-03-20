@@ -2,7 +2,6 @@ export const dynamic = "force-dynamic";
 
 import AccountInfo from "@/components/(AccountDashboard)/AccountInfo";
 import AccountAdminStats from "@/components/(AccountDashboard)/AccountAdminStats";
-import AccountUserPosts from "@/components/(AccountDashboard)/AccountUserPosts";
 import { fetchAllPosts, fetchUserPosts } from "@/lib/data/posts";
 import { fetchUsers, getSingleUserByUsername } from "@/lib/data/users";
 import { auth } from "@clerk/nextjs";

@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import ThemeToggleBtn from "../ui/themeToggleBtn";
 import { ModeToggle } from "../ui/ModeToggle";
+import Image from "next/image";
 
 const Header = ({ showBorders }) => {
   return (
@@ -24,12 +25,19 @@ const Header = ({ showBorders }) => {
         } max-w-[1220px] mx-auto px-12 py-4 flex justify-between items-center`}
       >
         <NavSocials />
-        <Link
+        {/* <Link
           href="/"
           className="font-black text-4xl"
         >
           Xchange
-        </Link>
+        </Link> */}
+        <div className="relative w-[220px] h-[60px]">
+          <Image
+            src="logo.svg"
+            fill
+          />
+        </div>
+
         <div className="flex items-center justify-end gap-4">
           <NavAccount />
           {/* <ThemeToggleBtn /> */}
