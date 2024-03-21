@@ -20,7 +20,7 @@ const UserPosts = ({ username, isUserAccount, fullName }) => {
     };
 
     getAllPosts(username);
-  }, []);
+  }, [username]);
 
   const handleEditButtonClick = () => {
     alert("Editing");

@@ -40,6 +40,7 @@ const Header = ({ showBorders }) => {
           <div className="relative w-[220px] h-[60px]">
             <Image
               src={logoLight}
+              alt="Xchange logo"
               fill
             />
           </div>
@@ -51,6 +52,7 @@ const Header = ({ showBorders }) => {
           <div className="relative w-[220px] h-[60px]">
             <Image
               src={logoDark}
+              alt="Xchange logo"
               fill
             />
           </div>

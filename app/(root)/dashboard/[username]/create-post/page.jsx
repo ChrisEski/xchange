@@ -123,8 +123,8 @@ const CreatePost = () => {
               defaultValue={slug}
             />
             <p className="text-neutral-600 italic">
-              The title of the article visible in the browser's address bar, using only lowercase
-              words separated by "-"
+              The title of the article visible in the browser&apos;s address bar, using only
+              lowercase words separated by &quot;-&quot;
             </p>
           </div>
           <div className="grid items-center gap-1.5 flex-auto">
@@ -177,6 +177,7 @@ const CreatePost = () => {
             {imageFile && (
               <Image
                 src={imageFile}
+                alt={imageFileName ? imageFileName : "Uploaded image"}
                 fill
                 style={{ objectFit: "cover" }}
                 className="rounded-lg border border-neutral-400"
