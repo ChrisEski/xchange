@@ -2,10 +2,11 @@
 export const dynamic = "force-dynamic";
 
 import { fetchAllPosts } from "@/lib/data/posts";
-import { formatDate } from "@/lib/utils";
+import { formatDate, getInitials } from "@/lib/utils";
 import { Pencil, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const AdminPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -52,8 +53,9 @@ const AdminPosts = () => {
           <thead className="text-sm">
             <tr>
               <th className="text-left px-5">Title</th>
+              <th className="text-left pr-5">Author</th>
               <th className="text-left pr-5">Creation Date</th>
-              <th className="text-left">Actions</th>
+              <th className="text-left"></th>
             </tr>
           </thead>
           <tbody className="text-sm">
@@ -62,19 +64,41 @@ const AdminPosts = () => {
                 key={post?._id}
                 className="h-16 hover:bg-neutral-100"
               >
-                <td className="max-w-[250px] p-5 hover:font-bold">
+                <td className="max-w-[250px] px-5">
                   <Link
                     href={`/posts/categories/${post?.category}/${post?.slug}`}
                     target="_blank"
-                    className="flex gap-1"
+                    className="hover:underline"
                   >
                     {post?.title}
                   </Link>
                 </td>
-                <td className="max-w-[120px]">{formatDate(post?.createdAt)}</td>
+                <td className="pr-5">
+                  <Link
+                    href={`/profile/${post?.author?.username}`}
+                    target="_blank"
+                    className="flex gap-2 items-center h-16"
+                  >
+                    <Avatar>
+                      <AvatarImage
+                        style={{ objectFit: "cover" }}
+                        src={post?.author?.avatar}
+                        alt={post?.author?.username}
+                      />
+                      <AvatarFallback>
+                        {getInitials(post?.author?.firstName, post?.author?.lastName)}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="flex flex-col">
+                      <span className="font-bold">{`${post?.author?.firstName} ${post?.author?.lastName}`}</span>
+                      <span className="text-neutral-700">{post?.author?.username}</span>
+                    </div>
+                  </Link>
+                </td>
+                <td className="max-w-[120px] pr-5">{formatDate(post?.createdAt)}</td>
                 <td>
                   <button onClick={handleDeleteButtonClick}>
-                    <Trash2 className="w-[20px] text-red-600" />
+                    <Trash2 className="w-4 text-red-600" />
                   </button>
                 </td>
               </tr>

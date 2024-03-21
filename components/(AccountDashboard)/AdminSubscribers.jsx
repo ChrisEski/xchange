@@ -6,6 +6,7 @@ import { formatDate } from "@/lib/utils";
 import { CheckCircle2, Pencil, RefreshCw, Trash2, XCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import YesNoTag from "../ui/YesNoTag";
 
 const AdminSubscribers = () => {
   const router = useRouter();
@@ -45,7 +46,7 @@ const AdminSubscribers = () => {
               <th className="text-left px-5">Email</th>
               <th className="text-left pr-5">Is user</th>
               <th className="text-left">Registered at</th>
-              <th className="text-left">Actions</th>
+              <th className="text-left"></th>
             </tr>
           </thead>
           <tbody className="text-sm">
@@ -58,11 +59,7 @@ const AdminSubscribers = () => {
                   {subscriber?.email}
                 </td>
                 <td className="max-w-[120px]">
-                  {subscriber?.isUser ? (
-                    <CheckCircle2 className="text-green-600 w-5" />
-                  ) : (
-                    <XCircle className="text-red-600 w-5" />
-                  )}
+                  <YesNoTag isTrue={subscriber?.isUser} />
                 </td>
                 <td className="">{formatDate(subscriber?.createdAt)}</td>
                 <td>

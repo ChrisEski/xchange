@@ -47,7 +47,7 @@ const AdminUsers = () => {
           <thead className="text-sm">
             <tr>
               <th className="text-left px-5">User</th>
-              <th className="text-left pr-5">Username</th>
+              <th className="text-left pr-5">Email</th>
               <th className="text-left">Joined</th>
             </tr>
           </thead>
@@ -57,7 +57,7 @@ const AdminUsers = () => {
                 key={user?._id}
                 className="hover:bg-neutral-100"
               >
-                <td className="max-w-[250px] px-5 ">
+                <td className="max-w-[150px] px-5 ">
                   <Link
                     href={`/profile/${user?.username}`}
                     target="_blank"
@@ -75,11 +75,11 @@ const AdminUsers = () => {
                     </Avatar>
                     <div className="flex flex-col">
                       <span className="font-bold">{`${user?.firstName} ${user?.lastName}`}</span>
-                      <span className="text-neutral-700">{user?.email}</span>
+                      <span className="text-neutral-700">{user?.username}</span>
                     </div>
                   </Link>
                 </td>
-                <td className="max-w-[120px]">{user?.username}</td>
+                <td className="max-w-[120px] pr-5">{user?.email}</td>
                 <td className="">{formatDate(user?.createdAt)}</td>
               </tr>
             ))}

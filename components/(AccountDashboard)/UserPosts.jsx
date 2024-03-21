@@ -52,7 +52,7 @@ const UserPosts = ({ username, isUserAccount }) => {
             <tr>
               <th className="text-left px-5">Title</th>
               <th className="text-left pr-5">Creation Date</th>
-              <th className="text-left">Actions</th>
+              <th className="text-left"></th>
             </tr>
           </thead>
           <tbody className="text-sm">
@@ -61,7 +61,7 @@ const UserPosts = ({ username, isUserAccount }) => {
                 key={post?._id}
                 className="h-16 hover:bg-neutral-100"
               >
-                <td className="max-w-[250px] p-5 hover:font-bold">
+                <td className="max-w-[250px] p-5 hover:underline">
                   <Link
                     href={`/posts/categories/${post?.category}/${post?.slug}`}
                     target="_blank"
@@ -73,7 +73,7 @@ const UserPosts = ({ username, isUserAccount }) => {
                 <td className="max-w-[120px]">{formatDate(post?.createdAt)}</td>
                 <td>
                   <button onClick={handleEditButtonClick}>
-                    <Pencil className="w-4 text-neutral-700 mr-2" />
+                    <Pencil className="w-4 text-neutral-700 mr-4" />
                   </button>
                   <button onClick={handleDeleteButtonClick}>
                     <Trash2 className="w-4 text-red-600" />

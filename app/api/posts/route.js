@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET(request) {
   try {
     await connectToDb();
-    const posts = await Post.find();
+    const posts = await Post.find().populate("author");
     return NextResponse.json(posts);
   } catch (error) {
     console.log(error);

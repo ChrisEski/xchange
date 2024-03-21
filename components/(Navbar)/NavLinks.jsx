@@ -2,10 +2,11 @@
 
 import { navLinks } from "@/lib/links";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 const NavLinks = () => {
   const params = useParams();
+  const currentPath = usePathname();
 
   return (
     <ul className={`px-12 py-2 border-y border-y-[#BFBFBF] flex justify-center items-center gap-4`}>
@@ -14,8 +15,8 @@ const NavLinks = () => {
           <Link
             href={navLink.path === "/" ? "/" : `/posts/categories/${navLink.path}`}
             className={`${
-              navLink.category === params.category ||
-              (navLink.category === "home" && params.category === undefined)
+              (navLink.path === "/" && currentPath === "/") ||
+              (currentPath.startsWith("/posts/categories") && navLink.category === params.category)
                 ? "font-bold"
                 : ""
             } font-display`}

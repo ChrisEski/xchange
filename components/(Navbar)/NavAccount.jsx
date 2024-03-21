@@ -15,7 +15,7 @@ const NavAccount = () => {
 
   if (isSignedIn) {
     return (
-      <div className="min-w-[140px] flex justify-end items-center">
+      <div className="flex justify-end items-center">
         {username ? (
           <Link
             href={`/dashboard/${username}`}
@@ -30,7 +30,7 @@ const NavAccount = () => {
     );
   } else {
     return (
-      <div className="min-w-[140px] flex justify-end">
+      <div className="flex justify-end">
         <SignInButton>
           <Button>Sign in</Button>
         </SignInButton>

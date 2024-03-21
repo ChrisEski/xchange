@@ -2,6 +2,7 @@ import NavSocials from "./NavSocials";
 import NavAccount from "./NavAccount";
 import NavLinks from "./NavLinks";
 import Link from "next/link";
+import logo from "../../public/logo.svg";
 import { Moon, SunDim } from "lucide-react";
 import {
   DropdownMenu,
@@ -31,16 +32,17 @@ const Header = ({ showBorders }) => {
         >
           Xchange
         </Link> */}
-        <div className="relative w-[220px] h-[60px]">
-          <Image
-            src="logo.svg"
-            fill
-          />
-        </div>
+        <Link href="/">
+          <div className="relative w-[220px] h-[60px]">
+            <Image
+              src={logo}
+              fill
+            />
+          </div>
+        </Link>
 
-        <div className="flex items-center justify-end gap-4">
+        <div className="flex items-center justify-end gap-4 min-w-[200px]">
           <NavAccount />
-          {/* <ThemeToggleBtn /> */}
           <ModeToggle />
         </div>
       </div>
