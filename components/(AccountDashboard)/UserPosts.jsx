@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
 
-const UserPosts = ({ username, isUserAccount }) => {
+const UserPosts = ({ username, isUserAccount, fullName }) => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -32,7 +32,9 @@ const UserPosts = ({ username, isUserAccount }) => {
   return (
     <div className="border border-neutral-300 rounded-lg p-4 flex flex-col gap-5">
       <div className="flex justify-between items-center">
-        <h2 className="font-bold text-xl">My Articles</h2>
+        <h2 className="font-bold text-xl">
+          {isUserAccount ? "My Articles" : `Articles by ${fullName}`}
+        </h2>
         {isUserAccount && (
           <Link
             href={`/dashboard/${username}/create-post`}
@@ -52,7 +54,7 @@ const UserPosts = ({ username, isUserAccount }) => {
             <tr>
               <th className="text-left px-5">Title</th>
               <th className="text-left pr-5">Creation Date</th>
-              <th className="text-left"></th>
+              {isUserAccount && <th className="text-left"></th>}
             </tr>
           </thead>
           <tbody className="text-sm">
@@ -61,7 +63,7 @@ const UserPosts = ({ username, isUserAccount }) => {
                 key={post?._id}
                 className="h-16 hover:bg-neutral-100"
               >
-                <td className="max-w-[250px] p-5 hover:underline">
+                <td className={`p-5 hover:underline ${isUserAccount ? "max-w-[250px]" : "w-full"}`}>
                   <Link
                     href={`/posts/categories/${post?.category}/${post?.slug}`}
                     target="_blank"
@@ -70,15 +72,17 @@ const UserPosts = ({ username, isUserAccount }) => {
                     {post?.title}
                   </Link>
                 </td>
-                <td className="max-w-[120px]">{formatDate(post?.createdAt)}</td>
-                <td>
-                  <button onClick={handleEditButtonClick}>
-                    <Pencil className="w-4 text-neutral-700 mr-4" />
-                  </button>
-                  <button onClick={handleDeleteButtonClick}>
-                    <Trash2 className="w-4 text-red-600" />
-                  </button>
-                </td>
+                <td className="min-w-[120px]">{formatDate(post?.createdAt)}</td>
+                {isUserAccount && (
+                  <td>
+                    <button onClick={handleEditButtonClick}>
+                      <Pencil className="w-4 text-neutral-700 mr-4" />
+                    </button>
+                    <button onClick={handleDeleteButtonClick}>
+                      <Trash2 className="w-4 text-red-600" />
+                    </button>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>

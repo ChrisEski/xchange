@@ -1,5 +1,8 @@
 const AccountLayout = ({ children }) => {
-  return <main className="section-content border-4 border-black">{children}</main>;
+  const showBorders = false;
+  return (
+    <main className={`section-content ${showBorders && "border-4 border-black"}`}>{children}</main>
+  );
 };
 
 export default AccountLayout;

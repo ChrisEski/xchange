@@ -15,7 +15,7 @@ const NavAccount = () => {
 
   if (isSignedIn) {
     return (
-      <div className="flex justify-end items-center">
+      <div className="flex justify-end items-center gap-4">
         {username ? (
           <Link
             href={`/dashboard/${username}`}

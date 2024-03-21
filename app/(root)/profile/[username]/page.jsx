@@ -1,28 +1,37 @@
+export const dynamic = "force-dynamic";
+
 import AccountInfo from "@/components/(AccountDashboard)/AccountInfo";
-import AccountPosts from "@/components/(AccountDashboard)/AccountUserPosts";
-import AccountInfoStats from "@/components/(AccountDashboard)/AccountAdminStats";
 import { getSingleUserByUsername } from "@/lib/data/users";
-import { Suspense } from "react";
+import { auth } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
+import UserPosts from "@/components/(AccountDashboard)/UserPosts";
 
-const ProfileAccount = async ({ params, searchParams }) => {
+const ProfileAccount = async ({ params }) => {
   const { username } = params;
+  const { userId } = auth();
 
-  // 1. Check if displayed user is Admin
+  // Check if displayed profile belongs to logged in user (if yes, redirect to /dashboard/:username)
   const displayedUser = await getSingleUserByUsername(username);
-  let isAdmin = displayedUser.isAdmin;
+  const isUserAccount = userId === displayedUser.clerkId;
+  const fullName = `${displayedUser.firstName} ${displayedUser.lastName}`;
 
-  return (
-    <section className="flex  gap-12">
-      {/* <div className="flex gap-12"> */}
-      {/* ACCOUNT INFO */}
-      <AccountInfo />
-      <div className="flex flex-col gap-6 flex-auto border border-blue-600">
-        {isAdmin && <AccountInfoStats />}
-
-        {/* USER'S POSTS & STATISTICS*/}
-        <AccountPosts />
+  return userId && isUserAccount ? (
+    redirect(`/dashboard/${username}`)
+  ) : (
+    // <div>Profile Page</div>;
+    <section className="flex flex-col gap-12">
+      <div className="flex gap-12">
+        {/* ACCOUNT INFO */}
+        <AccountInfo />
+        <div className="flex flex-col gap-6 flex-auto">
+          {/* USER'S POSTS & STATISTICS*/}
+          <UserPosts
+            username={username}
+            isUserAccount={isUserAccount}
+            fullName={fullName}
+          />
+        </div>
       </div>
-      {/* </div> */}
     </section>
   );
 };
