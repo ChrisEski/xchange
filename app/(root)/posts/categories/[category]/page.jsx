@@ -1,12 +1,12 @@
 import SectionTitle from "@/components/(Sections)/SectionTitle";
 import SinglePostCard from "@/components/ui/SinglePostCard";
-import { getCategoryPosts } from "@/lib/data/posts";
+import { fetchCategoryPosts } from "@/lib/data/posts";
 import { capitalizeFirstLetter } from "@/lib/utils";
 
 const Category = async ({ params }) => {
   const showBorders = false;
   const { category } = params;
-  const posts = await getCategoryPosts(category);
+  const posts = await fetchCategoryPosts(category);
 
   return (
     <section

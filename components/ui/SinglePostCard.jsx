@@ -3,25 +3,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { capitalizeFirstLetter, createExcerpt, formatDate, getInitials } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import CategoryLabel from "./CategoryLabel";
 
 const SinglePostCard = ({ post }) => {
   const formattedCategory = capitalizeFirstLetter(post?.category);
@@ -61,7 +42,7 @@ const SinglePostCard = ({ post }) => {
           {/* Publish date */}
           <span className="text-sm text-neutral-700">Published {formattedDate}</span>
           {/* Title-link */}
-          <Link href={`/posts/${post?.slug}`}>
+          <Link href={`/posts/categories/${post?.category}/${post?.slug}`}>
             <h3 className="text-lg font-bold font-display leading-none">{post?.title}</h3>
           </Link>
           {/* Excerpt */}

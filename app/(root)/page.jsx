@@ -1,9 +1,3 @@
-// import Banner from "@/components/Banner";
-// import SectionContainer from "@/components/SectionContainer";
-// import SectionFeatured from "@/components/SectionFeatured";
-// import SectionNewsletter from "@/components/SectionNewsletter";
-// import SectionPosts from "@/components/SectionPosts";
-// import SectionSocials from "@/components/SectionSocials";
 export const revalidate = 60;
 
 import Banner from "@/components/(Sections)/Banner";

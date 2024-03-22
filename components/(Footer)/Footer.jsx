@@ -34,10 +34,10 @@ const Footer = ({ showBorders }) => {
           <div>
             <h3 className="font-bold mb-4">Categories</h3>
             <ul>
-              {navLinks.map((link) => (
-                <li key={link.title}>
-                  <Link href={link.path === "/" ? "/" : `/posts/categories${link.path}`}>
-                    {link.title}
+              {navLinks.map((navLink) => (
+                <li key={navLink.title}>
+                  <Link href={navLink.path === "/" ? "/" : `/posts/categories/${navLink.path}`}>
+                    {navLink.title}
                   </Link>
                 </li>
               ))}

@@ -63,4 +63,3 @@ const DashboardAccount = async ({ params }) => {
 };
 
 export default DashboardAccount;
-<div className=""></div>;
