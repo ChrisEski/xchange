@@ -33,33 +33,37 @@ const DashboardAccount = async ({ params }) => {
   const isUserAccount = userId === displayedUser.clerkId;
   const isAdmin = displayedUser.isAdmin;
 
-  return userId && !isUserAccount ? (
-    redirect(`/profile/${username}`)
-  ) : (
-    <section className="flex flex-col gap-12">
-      {isAdmin && <AdminPageTag />}
-      <div className="flex gap-12">
-        {/* ACCOUNT INFO */}
-        <AccountInfo />
-        <div className="flex flex-col gap-6 flex-auto">
-          <div>
-            <AccountAdminStats
-              totalUserPosts={totalUserPosts}
-              totalPosts={totalPosts}
-              totalUsers={totalUsers}
-              totalSubscribers={totalSubscribers}
-              username={username}
-              isUserAccount={isUserAccount}
-              isAdmin={isAdmin}
-            />
-          </div>
+  try {
+    return userId && !isUserAccount ? (
+      redirect(`/profile/${username}`)
+    ) : (
+      <section className="flex flex-col gap-12">
+        {isAdmin && <AdminPageTag />}
+        <div className="flex gap-12">
+          {/* ACCOUNT INFO */}
+          <AccountInfo />
+          <div className="flex flex-col gap-6 flex-auto">
+            <div>
+              <AccountAdminStats
+                totalUserPosts={totalUserPosts}
+                totalPosts={totalPosts}
+                totalUsers={totalUsers}
+                totalSubscribers={totalSubscribers}
+                username={username}
+                isUserAccount={isUserAccount}
+                isAdmin={isAdmin}
+              />
+            </div>
 
-          {/* USER'S POSTS & STATISTICS*/}
-          {/* <AccountUserPosts totalUserPosts={totalUserPosts} /> */}
+            {/* USER'S POSTS & STATISTICS*/}
+            {/* <AccountUserPosts totalUserPosts={totalUserPosts} /> */}
+          </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default DashboardAccount;
