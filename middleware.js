@@ -7,6 +7,7 @@ export default authMiddleware({
     "/test/(.*)",
     "/posts/(.*)",
     "/posts/categories/(.*)",
+    "/dashboard/(.*)",
     "/profile/(.*)",
     "/api/posts",
     "/api/posts/(.*)",
