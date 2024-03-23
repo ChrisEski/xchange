@@ -1,12 +1,16 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/clerk-react";
-import { SignInButton, UserButton } from "@clerk/nextjs";
+import { SignInButton, SignOutButton, UserButton } from "@clerk/nextjs";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import { baseURL } from "@/lib/constables";
 
 const NavAccount = () => {
   const { isSignedIn, isLoaded, user } = useUser();
+  const router = useRouter();
   const username = user?.username;
 
   if (!isLoaded) {
@@ -26,6 +30,11 @@ const NavAccount = () => {
         ) : null}
 
         <UserButton afterSignOutUrl="/" />
+        <SignOutButton
+          signOutCallback={() => {
+            router.replace(`${baseURL}`);
+          }}
+        />
       </div>
     );
   } else {

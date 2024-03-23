@@ -2,18 +2,21 @@
 
 import { formatDate, getInitials } from "@/lib/utils";
 import Image from "next/image";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Calendar, NotebookPen, Mail, Pen, User, Pencil } from "lucide-react";
+import { Calendar, NotebookPen, Mail, Pen, User, Pencil, LogOut } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "../ui/textarea";
 import { fetchSingleUserByUsername } from "@/lib/data/users";
+import { SignOutButton } from "@clerk/nextjs";
+import { baseURL } from "@/lib/constables";
 
 const AccountInfo = () => {
+  const router = useRouter();
   const pathName = usePathname();
   const canEdit = !pathName.includes("/profile");
   const params = useParams();
@@ -277,6 +280,16 @@ const AccountInfo = () => {
                 Edit account
               </Button>
             )}
+            <SignOutButton
+              signOutCallback={() => {
+                router.replace(`${baseURL}`);
+              }}
+            >
+              <Button variant="outline">
+                Sign out
+                <LogOut className="ml-2 h-4 w-4" />
+              </Button>
+            </SignOutButton>
           </div>
         </>
       )}
