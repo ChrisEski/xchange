@@ -11,6 +11,7 @@ import { Button } from "../ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "../ui/textarea";
+import { fetchSingleUserByUsername } from "@/lib/data/users";
 
 const AccountInfo = () => {
   const pathName = usePathname();
@@ -18,31 +19,30 @@ const AccountInfo = () => {
   const params = useParams();
   const { username } = params;
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [editMode, setEditMode] = useState(false);
   const [displayedUser, setDisplayedUser] = useState({});
   const [userPosts, setUserPosts] = useState([]);
-  const [editMode, setEditMode] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [editFormData, setEditFormData] = useState({});
 
   useEffect(() => {
     try {
-      const fetchUser = async (username) => {
-        const res = await fetch(`http://localhost:3000/api/users/${username}`);
-        const data = await res.json();
-        setDisplayedUser(data);
-        setUserPosts(data.posts);
+      const getUser = async (username) => {
+        const user = await fetchSingleUserByUsername(username);
+        setDisplayedUser(user);
+        setUserPosts(user.posts);
         setEditFormData({
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
-          username: data.username,
-          password: data.password,
-          bio: data.bio,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+          username: user.username,
+          password: user.password,
+          bio: user.bio,
         });
         setIsLoading(false);
       };
 
-      fetchUser(username);
+      getUser(username);
     } catch (error) {
       console.log("Error fetching user:", error);
     }
