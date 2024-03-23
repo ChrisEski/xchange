@@ -21,7 +21,7 @@ const SinglePostCard = ({ post }) => {
       {/* Featured image */}
       <Link
         href={`/posts/categories/${post?.category}/${post?.slug}`}
-        className="relative flex-1 group"
+        className="relative min-h-[220px] group"
       >
         <div className="absolute inset-0 overflow-hidden">
           <Image
@@ -37,7 +37,7 @@ const SinglePostCard = ({ post }) => {
       </Link>
 
       {/* Details */}
-      <div className="flex-1 details p-3 flex flex-col gap-3 justify-between rounded-b-lg border border-neutral-300 border-t-0">
+      <div className="details flex-1 p-3 flex flex-col gap-3 justify-between rounded-b-lg border border-neutral-300 border-t-0">
         <div className="flex flex-col gap-3">
           {/* Publish date */}
           <span className="text-sm text-neutral-700">Published {formattedDate}</span>

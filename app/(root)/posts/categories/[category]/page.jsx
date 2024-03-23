@@ -25,21 +25,23 @@ const Category = () => {
   }, [category]);
   const showBorders = false;
 
-  return isLoading ? (
-    <div>Loading...</div>
-  ) : (
+  return (
     <section
       className={`${showBorders && "border-4 border-black"} flex flex-col gap-12 section-content`}
     >
       <SectionTitle altTitle={`${capitalizeFirstLetter(category)} articles`} />
-      <div className="cards grid grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))] gap-5">
-        {categoryPosts.map((post) => (
-          <SinglePostCard
-            key={post._id}
-            post={post}
-          />
-        ))}
-      </div>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <div className="cards grid grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))] gap-5">
+          {categoryPosts.map((post) => (
+            <SinglePostCard
+              key={post._id}
+              post={post}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 };
