@@ -14,6 +14,8 @@ const DashboardAccount = async ({ params }) => {
   const isUserAccount = userId === displayedUser.clerkId;
   const isAdmin = displayedUser.isAdmin;
 
+  console.log(auth());
+
   try {
     return userId && !isUserAccount ? (
       redirect(`/profile/${username}`)
