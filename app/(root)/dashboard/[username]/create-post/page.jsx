@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { addArticle } from "@/lib/actions";
 import { Textarea } from "@/components/ui/textarea";
+import { baseURL } from "@/lib/constables";
 
 const CreatePost = () => {
   const router = useRouter();
@@ -36,7 +37,7 @@ const CreatePost = () => {
   useEffect(() => {
     const getUser = async (username) => {
       try {
-        const res = await fetch(`http://localhost:3000/api/users/${username}`);
+        const res = await fetch(`${baseURL}/api/users/${username}`);
         const data = await res.json();
         setDisplayedUser(data);
         setIsLoading(false);
