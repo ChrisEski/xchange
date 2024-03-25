@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { addArticle } from "@/lib/actions";
+import { Textarea } from "@/components/ui/textarea";
 
 const CreatePost = () => {
   const router = useRouter();
@@ -148,6 +149,23 @@ const CreatePost = () => {
               </SelectContent>
             </Select>
           </div>
+        </div>
+
+        {/* BODY */}
+        <div>
+          <Label
+            htmlFor="body"
+            className="font-bold"
+          >
+            Main article body
+          </Label>
+          <Textarea
+            rows="20"
+            id="body"
+            name="body"
+            placeholder="Your article's main body"
+            className="w-full"
+          />
         </div>
 
         {/* FEATURED IMAGE */}

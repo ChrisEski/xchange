@@ -2,7 +2,7 @@ import { Skeleton } from "./skeleton";
 
 const AccountInfoSkeleton = () => {
   return (
-    <div className="border border-green-400 min-w-[280px] max-w-[25%] flex flex-col gap-5">
+    <div className="min-w-[280px] max-w-[25%] flex flex-col gap-5">
       {/* <div className="relative w-full aspect-square overflow-hidden rounded-full bg-red-200"></div> */}
       <Skeleton className="w-full aspect-square rounded-full" />
 

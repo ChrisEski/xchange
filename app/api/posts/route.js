@@ -18,3 +18,18 @@ export async function GET(request) {
     return NextResponse.json({ status: 500, message: "Error fetching posts" });
   }
 }
+
+export async function POST(request, response) {
+  try {
+    const data = await request.json();
+    // console.log("Submitted Data:", data);
+
+    const newPost = await Post.create(data);
+    newPost.save();
+
+    return NextResponse.json("Post created successfully", newPost);
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ status: 500, message: "Error creating post" });
+  }
+}
