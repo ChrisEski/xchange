@@ -14,8 +14,9 @@ import { Textarea } from "../ui/textarea";
 import { fetchSingleUserByUsername } from "@/lib/data/users";
 import { SignOutButton } from "@clerk/nextjs";
 import { baseURL } from "@/lib/constables";
+import AccountInfoSkeleton from "../ui/AccountInfoSkeleton";
 
-const AccountInfo = () => {
+const AccountInfo = ({ isUserAccount }) => {
   const router = useRouter();
   const pathName = usePathname();
   const canEdit = !pathName.includes("/profile");
@@ -58,7 +59,8 @@ const AccountInfo = () => {
   const fullName = `${displayedUser.firstName} ${displayedUser.lastName}`;
 
   return isLoading ? (
-    <div className=" flex-auto flex flex-col gap-3 min-w-[280px] max-w-[25%]">Loading...</div>
+    // <div className=" flex-auto flex flex-col gap-3 min-w-[280px] max-w-[25%]">Loading...</div>
+    <AccountInfoSkeleton />
   ) : (
     // <div>Info</div>
     <div className=" flex-auto flex flex-col gap-3 min-w-[280px] max-w-[25%]">
@@ -280,16 +282,19 @@ const AccountInfo = () => {
                 Edit account
               </Button>
             )}
-            <SignOutButton
-              signOutCallback={() => {
-                router.replace(`${baseURL}`);
-              }}
-            >
-              <Button variant="outline">
-                Sign out
-                <LogOut className="ml-2 h-4 w-4" />
-              </Button>
-            </SignOutButton>
+
+            {isUserAccount && (
+              <SignOutButton
+                signOutCallback={() => {
+                  router.replace(`${baseURL}`);
+                }}
+              >
+                <Button variant="outline">
+                  Sign out
+                  <LogOut className="ml-2 h-4 w-4" />
+                </Button>
+              </SignOutButton>
+            )}
           </div>
         </>
       )}

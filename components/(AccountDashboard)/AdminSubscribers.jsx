@@ -36,7 +36,7 @@ const AdminSubscribers = () => {
         <h2 className="font-bold text-xl">All Subscribers</h2>
       </div>
       {isLoading ? (
-        <div>Loading...</div>
+        <div>Loading data...</div>
       ) : subscribers.length === 0 || subscribers === undefined ? (
         <div>No subscribers registered yet</div>
       ) : (

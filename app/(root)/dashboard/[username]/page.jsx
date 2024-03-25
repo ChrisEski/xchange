@@ -14,8 +14,6 @@ const DashboardAccount = async ({ params }) => {
   const isUserAccount = userId === displayedUser.clerkId;
   const isAdmin = displayedUser.isAdmin;
 
-  console.log(auth());
-
   try {
     return userId && !isUserAccount ? (
       redirect(`/profile/${username}`)
@@ -24,7 +22,7 @@ const DashboardAccount = async ({ params }) => {
         {isAdmin && <AdminPageTag />}
         <div className="flex gap-12">
           {/* ACCOUNT INFO */}
-          <AccountInfo />
+          <AccountInfo isUserAccount={isUserAccount} />
           <div className="flex flex-col gap-6 flex-auto">
             <div>
               <AccountAdminStats
@@ -33,9 +31,6 @@ const DashboardAccount = async ({ params }) => {
                 isAdmin={isAdmin}
               />
             </div>
-
-            {/* USER'S POSTS & STATISTICS*/}
-            {/* <AccountUserPosts totalUserPosts={totalUserPosts} /> */}
           </div>
         </div>
       </section>

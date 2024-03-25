@@ -1,11 +1,11 @@
 import { connectToDb } from "@/lib/database";
 import { NewsletterEmail } from "@/lib/models";
-import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
   try {
     await connectToDb();
+
     const subscribers = await NewsletterEmail.find();
     return NextResponse.json(subscribers, {
       headers: {

@@ -39,7 +39,7 @@ const AdminUsers = () => {
         </div>
       </div>
       {isLoading ? (
-        <div>Loading...</div>
+        <div>Loading data...</div>
       ) : users.length === 0 || users === undefined ? (
         <div>No users joined yet</div>
       ) : (

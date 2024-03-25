@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 
 export async function GET(request) {
   const { userId } = auth();
-  // console.log(userId);
 
   try {
     await connectToDb();

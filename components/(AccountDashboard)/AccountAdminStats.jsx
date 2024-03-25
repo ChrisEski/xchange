@@ -101,7 +101,7 @@ const AccountAdminStats = ({ username, isUserAccount, isAdmin }) => {
             </div>
           </div>
           {isLoading ? (
-            <div>Loading...</div>
+            <div>Loading data...</div>
           ) : (
             <div className="grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-4">
               <div className="border border-neutral-300 px-6 py-3 rounded-md flex flex-col items-center">

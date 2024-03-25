@@ -2,10 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/clerk-react";
 import { SignInButton, SignOutButton, UserButton } from "@clerk/nextjs";
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { revalidatePath } from "next/cache";
 import { baseURL } from "@/lib/constables";
 import {
   DropdownMenu,
@@ -18,7 +15,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getInitials } from "@/lib/utils";
 import { Label } from "../ui/label";
-import { LogOut, NotebookPen, Settings, Settings2, User } from "lucide-react";
+import { LogOut, Plus, Settings } from "lucide-react";
 
 const NavAccount = () => {
   const { isSignedIn, isLoaded, user } = useUser();
@@ -53,11 +50,11 @@ const NavAccount = () => {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Settings2 className="mr-2 h-4 w-4" />
+              <Settings className="mr-2 h-4 w-4" />
               <span onClick={() => router.push(`/dashboard/${username}`)}>Dashboard</span>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <NotebookPen className="mr-2 h-4 w-4" />
+              <Plus className="mr-2 h-4 w-4" />
               <span onClick={() => router.push(`/dashboard/${username}/create-post`)}>
                 New Article
               </span>

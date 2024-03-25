@@ -45,7 +45,7 @@ const AdminPosts = () => {
         </div> */}
       </div>
       {isLoading ? (
-        <div>Loading...</div>
+        <div>Loading data...</div>
       ) : posts.length === 0 || posts === undefined ? (
         <div>No articles published yet</div>
       ) : (

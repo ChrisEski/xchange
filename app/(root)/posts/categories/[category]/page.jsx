@@ -6,6 +6,7 @@ import { fetchCategoryPosts } from "@/lib/data/posts";
 import { capitalizeFirstLetter } from "@/lib/utils";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import CardGroupSkeleton from "@/components/ui/CardGroupSkeleton";
 
 const Category = () => {
   const params = useParams();
@@ -31,7 +32,7 @@ const Category = () => {
     >
       <SectionTitle altTitle={`${capitalizeFirstLetter(category)} articles`} />
       {isLoading ? (
-        <div>Loading...</div>
+        <CardGroupSkeleton />
       ) : (
         <div className="cards grid grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))] gap-5">
           {categoryPosts.map((post) => (
