@@ -1,4 +1,4 @@
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 import Banner from "@/components/(Sections)/Banner";
 import SectionContainer from "@/components/(Sections)/SectionContainer";

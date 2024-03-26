@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { addArticle } from "@/lib/actions";
 import { Textarea } from "@/components/ui/textarea";
 import { baseURL } from "@/lib/constables";
+import { transliterateGreekToEnglish } from "@/lib/utils";
 
 const CreatePost = () => {
   const router = useRouter();
@@ -62,13 +63,24 @@ const CreatePost = () => {
     }
   }
 
+  function handleCategoryChange(value) {
+    setCategory(value);
+    console.log("Category:", value);
+  }
+
   function handleTitleChange(event) {
     // Get the current value of the title input
     const newTitle = event.target.value;
     // Update the title state
     setTitle(newTitle);
     // Generate the slug from the title
-    const newSlug = newTitle.toLowerCase().replace(/\s+/g, "-");
+    let transliterated = transliterateGreekToEnglish(newTitle);
+    const newSlug = transliterated
+      .trimStart()
+      .trimEnd()
+      .toLowerCase()
+      .replace(/[^a-zA-Z0-9 ]/g, "")
+      .replace(/\s+/g, "-");
     // Update the slug state
     setSlug(newSlug);
   }
@@ -139,6 +151,7 @@ const CreatePost = () => {
             <Select
               id="category"
               name="category"
+              onValueChange={handleCategoryChange}
             >
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select category" />
@@ -230,11 +243,13 @@ const CreatePost = () => {
         <div className="flex gap-4">
           <Button
             onClick={() => {
-              alert("Submitted");
+              alert("Article published successfully!");
               // !FIX: USE NEWLY CREATED ARTICLES DYNAMIC TITLE ROUTE
-              router.push(
-                "http://localhost:3000/posts/categories/technology/mastering-the-art-of-web-development-navigating-the-digital-landscape"
-              );
+              router.push(`${baseURL}/posts/categories/${category}/${slug}`);
+              // console.log("Title:", title);
+              // console.log("Slug:", slug);
+              // console.log("Category:", category);
+              // console.log("Body:", body);
             }}
           >
             <Send className="mr-2 h-4 w-4" /> Submit article
