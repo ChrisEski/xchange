@@ -185,7 +185,7 @@ const CreatePost = () => {
         {/* FEATURED IMAGE */}
         <div className="flex flex-col w-full overflow-hidden">
           <label className="font-bold">Featured image</label>
-          <div className="relative w-full aspect-video overflow-hidden">
+          <div className="relative w-full aspect-video overflow-hidden max-h-[560px]">
             {!imageFile && (
               <Label
                 htmlFor="featuredImage"
