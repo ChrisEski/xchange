@@ -15,6 +15,7 @@ import { fetchSingleUserByUsername } from "@/lib/data/users";
 import { SignOutButton } from "@clerk/nextjs";
 import { baseURL } from "@/lib/constables";
 import AccountInfoSkeleton from "../ui/AccountInfoSkeleton";
+import { fetchUserPosts } from "@/lib/data/posts";
 
 const AccountInfo = ({ isUserAccount }) => {
   const router = useRouter();
@@ -33,8 +34,9 @@ const AccountInfo = ({ isUserAccount }) => {
     try {
       const getUser = async (username) => {
         const user = await fetchSingleUserByUsername(username);
+        const posts = await fetchUserPosts(username);
         setDisplayedUser(user);
-        setUserPosts(user.posts);
+        setUserPosts(posts);
         setEditFormData({
           firstName: user.firstName,
           lastName: user.lastName,
