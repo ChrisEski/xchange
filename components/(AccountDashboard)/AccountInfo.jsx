@@ -16,6 +16,7 @@ import { SignOutButton } from "@clerk/nextjs";
 import { baseURL } from "@/lib/constables";
 import AccountInfoSkeleton from "../ui/AccountInfoSkeleton";
 import { fetchUserPosts } from "@/lib/data/posts";
+import { editPersonalInfo } from "@/lib/actions";
 
 const AccountInfo = ({ isUserAccount }) => {
   const router = useRouter();
@@ -58,6 +59,15 @@ const AccountInfo = ({ isUserAccount }) => {
     setEditFormData({ ...editFormData, [event.target.name]: event.target.value });
   };
 
+  const updatePersonalInfo = async (formData) => {
+    const updatedUserData = await editPersonalInfo(formData);
+    setEditMode(false);
+    const updatedUsername = updatedUserData.username;
+    console.log("Old username:", displayedUser.username);
+    console.log("New username:", updatedUsername);
+    router.push(`/dashboard/${updatedUsername}`);
+  };
+
   const fullName = `${displayedUser.firstName} ${displayedUser.lastName}`;
 
   return isLoading ? (
@@ -67,7 +77,10 @@ const AccountInfo = ({ isUserAccount }) => {
     // <div>Info</div>
     <div className=" flex-auto flex flex-col gap-3 min-w-[280px] max-w-[25%]">
       {canEdit && editMode ? (
-        <form className="flex flex-col gap-5">
+        <form
+          action={updatePersonalInfo}
+          className="flex flex-col gap-5"
+        >
           <div className="relative w-full aspect-square overflow-hidden">
             <Avatar className="w-full h-full">
               <AvatarImage src={displayedUser.avatar} />
@@ -138,63 +151,6 @@ const AccountInfo = ({ isUserAccount }) => {
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label
-                htmlFor="email"
-                className="font-semibold"
-              >
-                Email
-              </Label>
-              <Input
-                type="email"
-                id="email"
-                name="email"
-                defaultValue={displayedUser.email}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="grid w-full max-w-sm items-center gap-1.5">
-              <Label
-                htmlFor="currentPassword"
-                className="font-semibold"
-              >
-                Current Password
-              </Label>
-              <Input
-                type="currentPassword"
-                id="currentPassword"
-                name="currentPassword"
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="grid w-full max-w-sm items-center gap-1.5">
-              <Label
-                htmlFor="newPassword"
-                className="font-semibold"
-              >
-                New Password
-              </Label>
-              <Input
-                type="newPassword"
-                id="newPassword"
-                name="newPassword"
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="grid w-full max-w-sm items-center gap-1.5">
-              <Label
-                htmlFor="confirmNewPassword"
-                className="font-semibold"
-              >
-                Confirm New Password
-              </Label>
-              <Input
-                type="confirmNewPassword"
-                id="confirmNewPassword"
-                name="confirmNewPassword"
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="grid w-full max-w-sm items-center gap-1.5">
-              <Label
                 htmlFor="bio"
                 className="font-semibold"
               >
@@ -211,10 +167,10 @@ const AccountInfo = ({ isUserAccount }) => {
             </div>
             <div className="flex gap-3">
               <Button
-                onClick={() => {
-                  alert("Changes saved");
-                  setEditMode(false);
-                }}
+              // onClick={() => {
+              //   alert("Changes saved");
+              //   setEditMode(false);
+              // }}
               >
                 Save changes
               </Button>

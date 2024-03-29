@@ -6,6 +6,7 @@ import { getSingleUserByUsername } from "@/lib/data/users";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import AdminPageTag from "@/components/(AccountDashboard)/AdminPageTag";
+import { getAuth, clerkClient } from "@clerk/nextjs/server";
 
 const DashboardAccount = async ({ params }) => {
   const { username } = params;
@@ -13,6 +14,9 @@ const DashboardAccount = async ({ params }) => {
   const displayedUser = await getSingleUserByUsername(username);
   const isUserAccount = userId === displayedUser.clerkId;
   const isAdmin = displayedUser.isAdmin;
+
+  // const user = await clerkClient.users.getUser(userId);
+  // console.log(user);
 
   try {
     return userId && !isUserAccount ? (
