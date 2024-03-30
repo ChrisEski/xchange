@@ -7,6 +7,7 @@ import { Pencil, Plus, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
+import { deleteArticle } from "@/lib/actions";
 
 const UserPosts = ({ username, isUserAccount, fullName }) => {
   const [posts, setPosts] = useState([]);
@@ -25,9 +26,7 @@ const UserPosts = ({ username, isUserAccount, fullName }) => {
   const handleEditButtonClick = () => {
     alert("Editing");
   };
-  const handleDeleteButtonClick = () => {
-    alert("Deleting");
-  };
+  const handleDeleteButtonClick = () => {};
 
   return (
     <div className="border border-neutral-300 rounded-lg p-4 flex flex-col gap-5">
@@ -78,7 +77,11 @@ const UserPosts = ({ username, isUserAccount, fullName }) => {
                     <button onClick={handleEditButtonClick}>
                       <Pencil className="w-4 text-neutral-700 mr-4" />
                     </button>
-                    <button onClick={handleDeleteButtonClick}>
+                    <button
+                      onClick={async () => {
+                        await deleteArticle(post?._id, post?.category, username);
+                      }}
+                    >
                       <Trash2 className="w-4 text-red-600" />
                     </button>
                   </td>

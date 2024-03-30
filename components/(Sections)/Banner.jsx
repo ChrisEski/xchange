@@ -37,7 +37,7 @@ const Banner = async ({ showBorders }) => {
         <div className="absolute inset-0 flex flex-col justify-end p-6 gap-4 w-[65%]">
           <div className="flex flex-col items-start">
             <CategoryLabel category={post?.category} />
-            <h3 className="text-4xl font-bold font-display leading-none text-white mt-1">
+            <h3 className="text-4xl font-bold font-display leading-none text-white mt-2">
               {post?.title}
             </h3>
             <span className=" text-neutral-300 text-sm mt-2">

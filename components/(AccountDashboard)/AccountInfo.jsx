@@ -17,6 +17,7 @@ import { baseURL } from "@/lib/constables";
 import AccountInfoSkeleton from "../ui/AccountInfoSkeleton";
 import { fetchUserPosts } from "@/lib/data/posts";
 import { editPersonalInfo } from "@/lib/actions";
+import { Separator } from "../ui/separator";
 
 const AccountInfo = ({ isUserAccount }) => {
   const router = useRouter();
@@ -63,9 +64,12 @@ const AccountInfo = ({ isUserAccount }) => {
     const updatedUserData = await editPersonalInfo(formData);
     setEditMode(false);
     const updatedUsername = updatedUserData.username;
-    console.log("Old username:", displayedUser.username);
-    console.log("New username:", updatedUsername);
     router.push(`/dashboard/${updatedUsername}`);
+  };
+
+  const handleDeleteAccount = () => {
+    alert("Deleting your account");
+    setEditMode(false);
   };
 
   const fullName = `${displayedUser.firstName} ${displayedUser.lastName}`;
@@ -166,14 +170,7 @@ const AccountInfo = ({ isUserAccount }) => {
               />
             </div>
             <div className="flex gap-3">
-              <Button
-              // onClick={() => {
-              //   alert("Changes saved");
-              //   setEditMode(false);
-              // }}
-              >
-                Save changes
-              </Button>
+              <Button>Save changes</Button>
               <Button
                 variant="outline"
                 onClick={() => {
@@ -181,6 +178,23 @@ const AccountInfo = ({ isUserAccount }) => {
                 }}
               >
                 Cancel
+              </Button>
+            </div>
+            <div className="flex flex-col gap-3 border-2 border-[#DC2626] border-dashed rounded-md p-3">
+              {/* <Separator /> */}
+              <h2 className="text-xl text-[#DC2626] font-semibold">Delete account</h2>
+              <p>
+                Caution! This is a destructive request that{" "}
+                <span className="font-bold italic">cannot be undone.</span> Are you sure you want to
+                delete your account?
+              </p>
+              <Button
+                variant="destructive"
+                onClick={() => {
+                  handleDeleteAccount();
+                }}
+              >
+                Delete my account
               </Button>
             </div>
           </div>

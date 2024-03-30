@@ -35,7 +35,7 @@ const FeaturedPost = ({ post }) => {
           <span className="text-white rounded font-semibold px-2 bg-white/20 border border-white">
             {formattedCategory}
           </span>
-          <h3 className="text-lg font-bold font-display leading-none text-white">{title}</h3>
+          <h3 className="text-lg font-bold font-display leading-none text-white mt-1">{title}</h3>
           <span className=" text-neutral-300">Published {formattedDate}</span>
         </div>
         <p className="text-sm text-neutral-300">{formattedBody}</p>

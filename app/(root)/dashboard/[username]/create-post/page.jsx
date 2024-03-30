@@ -246,10 +246,6 @@ const CreatePost = () => {
               alert("Article published successfully!");
               // !FIX: USE NEWLY CREATED ARTICLES DYNAMIC TITLE ROUTE
               router.push(`${baseURL}/posts/categories/${category}/${slug}`);
-              // console.log("Title:", title);
-              // console.log("Slug:", slug);
-              // console.log("Category:", category);
-              // console.log("Body:", body);
             }}
           >
             <Send className="mr-2 h-4 w-4" /> Submit article

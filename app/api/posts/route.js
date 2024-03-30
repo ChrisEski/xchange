@@ -1,5 +1,5 @@
 import { connectToDb } from "@/lib/database";
-import { Post } from "@/lib/models";
+import { Post, User } from "@/lib/models";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
@@ -22,10 +22,16 @@ export async function GET(request) {
 export async function POST(request, response) {
   try {
     const data = await request.json();
-    // console.log("Submitted Data:", data);
+    const userId = data?.author;
 
+    // Create the new post
     const newPost = await Post.create(data);
     newPost.save();
+
+    // Add the new post to the user
+    const user = await User.findById(userId);
+    user.posts.push(newPost._id);
+    await user.save();
 
     return NextResponse.json("Post created successfully", newPost);
   } catch (error) {
