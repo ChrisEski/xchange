@@ -20,6 +20,7 @@ import { addArticle } from "@/lib/actions";
 import { Textarea } from "@/components/ui/textarea";
 import { baseURL } from "@/lib/constables";
 import { transliterateGreekToEnglish } from "@/lib/utils";
+import SubmitArticleButton from "@/components/ui/SubmitArticleButton";
 
 const CreatePost = () => {
   const router = useRouter();
@@ -97,7 +98,13 @@ const CreatePost = () => {
     <div className="flex flex-col gap-12">
       <h1 className="font-display font-bold text-5xl">Create a new article</h1>
       <form
-        action={addArticle}
+        action={async (formData) => {
+          const result = await addArticle(formData);
+          if (result.status === 201) {
+            alert("Article published successfully!");
+            router.push(`/posts/categories/${formData.get("category")}/${formData.get("slug")}`);
+          }
+        }}
         className="flex flex-col gap-12"
       >
         {/* TITLE */}
@@ -241,15 +248,7 @@ const CreatePost = () => {
 
         {/* BUTTONS */}
         <div className="flex gap-4">
-          <Button
-            onClick={() => {
-              alert("Article published successfully!");
-              // !FIX: USE NEWLY CREATED ARTICLES DYNAMIC TITLE ROUTE
-              router.push(`${baseURL}/posts/categories/${category}/${slug}`);
-            }}
-          >
-            <Send className="mr-2 h-4 w-4" /> Submit article
-          </Button>
+          <SubmitArticleButton />
           <Button
             variant="outline"
             onClick={() => {

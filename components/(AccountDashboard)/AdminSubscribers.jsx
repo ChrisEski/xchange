@@ -7,6 +7,7 @@ import { CheckCircle2, Pencil, RefreshCw, Trash2, XCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import YesNoTag from "../ui/YesNoTag";
+import DeleteSubscriberForm from "../ui/DeleteSubscriberForm";
 
 const AdminSubscribers = () => {
   const router = useRouter();
@@ -53,9 +54,9 @@ const AdminSubscribers = () => {
             {subscribers.map((subscriber) => (
               <tr
                 key={subscriber?._id}
-                className="hover:bg-neutral-100"
+                className="hover:bg-neutral-100 h-14"
               >
-                <td className="max-w-[250px] px-5 flex gap-2 items-center h-8">
+                <td className="max-w-[250px] px-5 flex gap-2 items-center h-14">
                   {subscriber?.email}
                 </td>
                 <td className="max-w-[120px]">
@@ -63,9 +64,10 @@ const AdminSubscribers = () => {
                 </td>
                 <td className="">{formatDate(subscriber?.createdAt)}</td>
                 <td>
-                  <button onClick={handleDeleteButtonClick}>
+                  {/* <button onClick={handleDeleteButtonClick}>
                     <Trash2 className="w-4 text-red-600" />
-                  </button>
+                  </button> */}
+                  <DeleteSubscriberForm userId={subscriber?._id} />
                 </td>
               </tr>
             ))}

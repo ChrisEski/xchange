@@ -1,21 +1,21 @@
 "use client";
 import { Trash2 } from "lucide-react";
 import { Button } from "./button";
-import { deleteArticle } from "@/lib/actions";
+import { deleteSubscriber } from "@/lib/actions";
 
-const DeletePostForm = ({ postId }) => {
+const DeleteSubscriberForm = ({ userId }) => {
   return (
     <form
       action={async (formData) => {
-        await deleteArticle(formData);
+        await deleteSubscriber(formData);
         window.location.reload();
       }}
       className=""
     >
       <input
         type="hidden"
-        name="postId"
-        value={postId}
+        name="userId"
+        value={userId}
       />
       <Button
         variant="outline"
@@ -27,4 +27,4 @@ const DeletePostForm = ({ postId }) => {
   );
 };
 
-export default DeletePostForm;
+export default DeleteSubscriberForm;

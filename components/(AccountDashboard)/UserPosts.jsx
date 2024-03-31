@@ -6,7 +6,7 @@ import { formatDate } from "@/lib/utils";
 import { Pencil, Plus, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { deleteArticle } from "@/lib/actions";
 import { redirect, useRouter } from "next/navigation";
 import { revalidatePath } from "next/cache";
@@ -69,7 +69,7 @@ const UserPosts = ({ username, isUserAccount, fullName }) => {
                 key={post?._id}
                 className="h-16 hover:bg-neutral-100"
               >
-                <td className={`p-5 hover:underline ${isUserAccount ? "max-w-[250px]" : "w-full"}`}>
+                <td className={`p-5 hover:underline ${isUserAccount ? "w-[450px]" : "w-full"}`}>
                   <Link
                     href={`/posts/categories/${post?.category}/${post?.slug}`}
                     target="_blank"
@@ -78,23 +78,19 @@ const UserPosts = ({ username, isUserAccount, fullName }) => {
                     {post?.title}
                   </Link>
                 </td>
-                <td className="min-w-[120px]">{formatDate(post?.createdAt)}</td>
+                <td className="w-[113px]">{formatDate(post?.createdAt)}</td>
                 {isUserAccount && (
-                  <td className="">
-                    <button onClick={handleEditButtonClick}>
-                      <Pencil className="w-4 text-neutral-700 mr-4" />
-                    </button>
-                    <DeletePostForm
-                      postId={post?._id}
-                      username={username}
-                    />
-                    {/* <button
-                      onClick={() => {
-                        // MAKE IT A FORM ACTION
-                      }}
-                    >
-                      <Trash2 className="w-4 text-red-600" />
-                    </button> */}
+                  <td className="w-[10px]">
+                    <div className="flex justify-end items-center gap-3 w-[120px]">
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={handleEditButtonClick}
+                      >
+                        <Pencil className="h-4 w-4" />
+                      </Button>
+                      <DeletePostForm postId={post?._id} />
+                    </div>
                   </td>
                 )}
               </tr>

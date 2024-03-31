@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET(request) {
   try {
     await connectToDb();
-    const posts = await Post.find().populate("author");
+    const posts = await Post.find().populate("author").sort({ createdAt: -1 });
     return NextResponse.json(posts, {
       headers: {
         "Access-Control-Allow-Origin": "*",

@@ -7,7 +7,7 @@ export async function GET(request, { params }) {
     const { username } = params;
     await connectToDb();
     const user = await User.findOne({ username: username });
-    const posts = await Post.find({ author: user._id });
+    const posts = await Post.find({ author: user._id }).sort({ createdAt: -1 });
     return NextResponse.json(posts, {
       headers: {
         "Access-Control-Allow-Origin": "*",

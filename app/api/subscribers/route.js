@@ -6,7 +6,7 @@ export async function GET(request) {
   try {
     await connectToDb();
 
-    const subscribers = await NewsletterEmail.find();
+    const subscribers = await NewsletterEmail.find().sort({ createdAt: -1 });
     return NextResponse.json(subscribers, {
       headers: {
         "Access-Control-Allow-Origin": "*",

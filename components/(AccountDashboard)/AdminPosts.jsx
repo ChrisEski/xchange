@@ -7,6 +7,7 @@ import { Pencil, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import DeletePostForm from "../ui/DeletePostForm";
 
 const AdminPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -97,9 +98,12 @@ const AdminPosts = () => {
                 </td>
                 <td className="max-w-[120px] pr-5">{formatDate(post?.createdAt)}</td>
                 <td>
-                  <button onClick={handleDeleteButtonClick}>
+                  {/* <button onClick={handleDeleteButtonClick}>
                     <Trash2 className="w-4 text-red-600" />
-                  </button>
+                  </button> */}
+                  <div>
+                    <DeletePostForm postId={post?._id} />
+                  </div>
                 </td>
               </tr>
             ))}
