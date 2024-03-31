@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 import AccountInfo from "@/components/(AccountDashboard)/AccountInfo";
 import AccountAdminStats from "@/components/(AccountDashboard)/AccountAdminStats";

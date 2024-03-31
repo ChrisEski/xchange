@@ -8,8 +8,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
 import { deleteArticle } from "@/lib/actions";
+import { redirect, useRouter } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import DeletePostForm from "../ui/DeletePostForm";
 
 const UserPosts = ({ username, isUserAccount, fullName }) => {
+  const router = useRouter();
+
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -26,7 +31,9 @@ const UserPosts = ({ username, isUserAccount, fullName }) => {
   const handleEditButtonClick = () => {
     alert("Editing");
   };
-  const handleDeleteButtonClick = () => {};
+  const handleDeleteButtonClick = async () => {
+    // MAKE IT A FORM ACTION
+  };
 
   return (
     <div className="border border-neutral-300 rounded-lg p-4 flex flex-col gap-5">
@@ -73,17 +80,21 @@ const UserPosts = ({ username, isUserAccount, fullName }) => {
                 </td>
                 <td className="min-w-[120px]">{formatDate(post?.createdAt)}</td>
                 {isUserAccount && (
-                  <td>
+                  <td className="">
                     <button onClick={handleEditButtonClick}>
                       <Pencil className="w-4 text-neutral-700 mr-4" />
                     </button>
-                    <button
-                      onClick={async () => {
-                        await deleteArticle(post?._id, post?.category, username);
+                    <DeletePostForm
+                      postId={post?._id}
+                      username={username}
+                    />
+                    {/* <button
+                      onClick={() => {
+                        // MAKE IT A FORM ACTION
                       }}
                     >
                       <Trash2 className="w-4 text-red-600" />
-                    </button>
+                    </button> */}
                   </td>
                 )}
               </tr>
