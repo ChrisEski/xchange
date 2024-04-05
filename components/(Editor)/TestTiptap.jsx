@@ -2,7 +2,7 @@
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import Toolbar from "./Toolbar";
+import Toolbar from "./TestToolbar";
 
 const Tiptap = ({ content, onChange }) => {
   const handleChange = (newContent) => {

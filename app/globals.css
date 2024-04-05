@@ -5,6 +5,68 @@
 @tailwind components;
 @tailwind utilities;
 
+.editorOrderedList {
+  list-style-type: disc;
+}
+.editorBulletList {
+  list-style-type: decimal;
+}
+
+.editorOrderedList,
+.editorBulletList {
+  margin-left: 15px;
+}
+
+h2.editorHeading,
+h3.editorHeading,
+h4.editorHeading {
+  @apply font-display font-semibold;
+}
+
+h2.editorHeading {
+  @apply text-2xl;
+}
+h3.editorHeading {
+  @apply text-xl;
+}
+h4.editorHeading {
+  @apply text-lg;
+}
+
+.tiptap p {
+  @apply mb-5;
+}
+
+.editorCode {
+  @apply bg-[#f4f4f4] border border-[#ccc] rounded-[5px] p-[10px] text-sm;
+}
+blockquote.editorBlockquote {
+  /* font-size: 1.4em; */
+  width: 60%;
+  /* margin: 50px; */
+  font-style: italic;
+  color: #555555;
+  padding: 1em 30px 1.2em 40px;
+  border-left: 8px solid black;
+  line-height: 1.6;
+  position: relative;
+  background: #ededed;
+}
+
+blockquote.editorBlockquote::before {
+  font-family: Arial;
+  content: "\201C";
+  color: black;
+  font-size: 4em;
+  position: absolute;
+  left: 10px;
+  top: -10px;
+}
+
+blockquote.editorBlockquote::after {
+  content: "";
+}
+
 .section-content {
   @apply p-12 max-w-[1220px] mx-auto;
 }

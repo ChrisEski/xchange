@@ -21,6 +21,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { baseURL } from "@/lib/constables";
 import { transliterateGreekToEnglish } from "@/lib/utils";
 import SubmitArticleButton from "@/components/ui/SubmitArticleButton";
+import { useEditor, EditorContent } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import Toolbar from "@/components/(Editor)/Toolbar";
+import Underline from "@tiptap/extension-underline";
+import TextAlign from "@tiptap/extension-text-align";
+import OrderedList from "@tiptap/extension-ordered-list";
+import ListItem from "@tiptap/extension-list-item";
+import BulletList from "@tiptap/extension-bullet-list";
+import Code from "@tiptap/extension-code";
+import Blockquote from "@tiptap/extension-blockquote";
+import Heading from "@tiptap/extension-heading";
+import Paragraph from "@tiptap/extension-paragraph";
 
 const CreatePost = () => {
   const router = useRouter();
@@ -33,8 +45,61 @@ const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [category, setCategory] = useState("");
+  const [editorContent, setEditorContent] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [imageFileName, setImageFileName] = useState("");
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Underline,
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
+      Heading.configure({
+        levels: [2, 3, 4],
+        HTMLAttributes: {
+          class: "editorHeading",
+        },
+      }),
+      OrderedList.configure({
+        HTMLAttributes: {
+          class: "editorOrderedList",
+        },
+      }),
+      BulletList.configure({
+        HTMLAttributes: {
+          class: "editorBulletList",
+        },
+      }),
+      Code.configure({
+        HTMLAttributes: {
+          class: "editorCode",
+        },
+      }),
+      Blockquote.configure({
+        HTMLAttributes: {
+          class: "editorBlockquote",
+        },
+      }),
+      ListItem,
+      Paragraph.configure({
+        HTMLAttributes: {
+          class: "editorParagraph",
+        },
+      }),
+    ],
+    content: `<p><code class="editorCode">const message = 'Hello from Tiptap editor!';</code></p><p><code class="editorCode">console.log(message);</code></p><p></p><blockquote>This is a blockquote section of the content</blockquote><p></p><p></p>`,
+    editorProps: {
+      attributes: {
+        class:
+          "text-[14px] p-3 border border-neutral-200 rounded-bl-lg rounded-br-lg outline-none min-h-[560px]",
+      },
+    },
+    onUpdate: ({ editor }) => {
+      setEditorContent(editor.getHTML());
+    },
+  });
 
   useEffect(() => {
     const getUser = async (username) => {
@@ -94,6 +159,9 @@ const CreatePost = () => {
     router.push(`/profile/${urlParamsUsername}`);
   }
 
+  console.log("Editor content:", editorContent);
+  // console.log("Is active:", editor.isActive());
+
   return (
     <div className="flex flex-col gap-12">
       <h1 className="font-display font-bold text-5xl">Create a new article</h1>
@@ -143,7 +211,7 @@ const CreatePost = () => {
               className="w-full"
               defaultValue={slug}
             />
-            <p className="text-neutral-600 italic">
+            <p className="text-neutral-500 italic text-sm">
               The title of the article visible in the browser&apos;s address bar, using only
               lowercase words separated by &quot;-&quot;
             </p>
@@ -180,13 +248,17 @@ const CreatePost = () => {
           >
             Main article body
           </Label>
-          <Textarea
+          {/* <Textarea
             rows="20"
             id="body"
             name="body"
             placeholder="Your article's main body"
             className="w-full"
-          />
+          /> */}
+          <div>
+            <Toolbar editor={editor} />
+            <EditorContent editor={editor} />
+          </div>
         </div>
 
         {/* FEATURED IMAGE */}
