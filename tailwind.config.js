@@ -24,6 +24,7 @@ module.exports = {
       fontFamily: {
         display: ["Playfair Display", "serif"],
         body: ["Lato", "sans-serif"],
+        code: ["Source Code Pro", "serif"],
       },
       gridTemplateColumns: {
         colAutoWrap: "repeat(auto-fill, minmax(380px, 1fr));",

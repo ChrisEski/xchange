@@ -44,6 +44,7 @@
     "cloudinary": "^2.0.3",
     "clsx": "^2.1.0",
     "flowbite-react": "^0.7.2",
+    "html-react-parser": "^5.1.10",
     "lucide-react": "^0.338.0",
     "mongodb": "^6.3.0",
     "mongoose": "^8.2.0",

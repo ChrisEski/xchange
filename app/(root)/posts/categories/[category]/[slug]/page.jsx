@@ -7,6 +7,7 @@ import CategoryLabel from "@/components/ui/CategoryLabel";
 import SectionContainer from "@/components/(Sections)/SectionContainer";
 import SectionPosts from "@/components/(Sections)/SectionPosts";
 import Link from "next/link";
+import DOMElement from "@/components/DOMElement";
 
 const Article = async ({ params }) => {
   const showBorders = false;
@@ -16,6 +17,12 @@ const Article = async ({ params }) => {
   const { title, body, author, featuredImage, category, createdAt } = post;
   const { username, firstName, lastName, avatar, isAdmin } = author;
   const authorInitials = getInitials(firstName, lastName);
+
+  // const createMarkup = (htmlString) => {
+  //   return { __html: htmlString };
+  // };
+
+  // const parsedBody = createMarkup(body);
 
   return (
     <>
@@ -64,7 +71,12 @@ const Article = async ({ params }) => {
             style={{ objectFit: "cover" }}
           />
         </div>
-        <p className="text-lg">{body}</p>
+        {/* <p className="text-lg">{body}</p> */}
+        <DOMElement body={body} />
+        {/* <p
+          className="text-lg"
+          dangerouslySetInnerHTML={parsedBody}
+        ></p> */}
       </section>
       <SectionContainer>
         <SectionPosts

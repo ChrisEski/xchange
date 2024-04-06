@@ -159,20 +159,26 @@ const CreatePost = () => {
     router.push(`/profile/${urlParamsUsername}`);
   }
 
-  console.log("Editor content:", editorContent);
+  // console.log("Editor content:", editorContent);
   // console.log("Is active:", editor.isActive());
+
+  // const handleFormSubmit = async (formData) => {
+  //   const result = await addArticle(formData);
+  //   console.log("Result:", result);
+  //   if (result.status === 201) {
+  //     alert("Article published successfully!");
+  //     router.push(`/posts/categories/${formData.get("category")}/${formData.get("slug")}`);
+  //   }
+  // };
+
+  // const submitFormWithBody = handleFormSubmit.bind(null, editorContent);
+  const submitFormWithBody = addArticle.bind(null, editorContent);
 
   return (
     <div className="flex flex-col gap-12">
       <h1 className="font-display font-bold text-5xl">Create a new article</h1>
       <form
-        action={async (formData) => {
-          const result = await addArticle(formData);
-          if (result.status === 201) {
-            alert("Article published successfully!");
-            router.push(`/posts/categories/${formData.get("category")}/${formData.get("slug")}`);
-          }
-        }}
+        action={submitFormWithBody}
         className="flex flex-col gap-12"
       >
         {/* TITLE */}

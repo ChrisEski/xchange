@@ -1,6 +1,6 @@
 export const revalidate = 1800;
 
-import { Lato, Playfair_Display } from "next/font/google";
+import { Lato, Playfair_Display, Source_Code_Pro } from "next/font/google";
 import "../globals.css";
 import Footer from "@/components/(Footer)/Footer";
 import Script from "next/script";
@@ -22,6 +22,12 @@ const lato = Lato({
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+});
+
+const source = Source_Code_Pro({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
 });
 

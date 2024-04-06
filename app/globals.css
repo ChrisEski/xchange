@@ -1,44 +1,50 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.editorOrderedList {
+.tiptap ol {
   list-style-type: disc;
 }
-.editorBulletList {
+.tiptap ul {
   list-style-type: decimal;
 }
 
-.editorOrderedList,
-.editorBulletList {
+.tiptap ol,
+.tiptap ul {
   margin-left: 15px;
 }
 
-h2.editorHeading,
+.tiptap h2,
+.tiptap h3,
+.tiptap h4 {
+  @apply font-display font-semibold;
+}
+/* h2.editorHeading,
 h3.editorHeading,
 h4.editorHeading {
   @apply font-display font-semibold;
-}
+} */
 
-h2.editorHeading {
+.tiptap h2 {
   @apply text-2xl;
 }
-h3.editorHeading {
+.tiptap h3 {
   @apply text-xl;
 }
-h4.editorHeading {
+.tiptap h4 {
   @apply text-lg;
 }
 
 .tiptap p {
-  @apply mb-5;
+  @apply leading-8;
 }
 
-.editorCode {
-  @apply bg-[#f4f4f4] border border-[#ccc] rounded-[5px] p-[10px] text-sm;
+.tiptap code {
+  @apply font-code bg-[#f4f4f4] border border-[#ccc] rounded-[5px] py-[1px] px-[4px] text-sm;
 }
 blockquote.editorBlockquote {
   /* font-size: 1.4em; */
