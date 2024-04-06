@@ -44,7 +44,7 @@ const Banner = async ({ showBorders }) => {
               Published {formatDate(post?.createdAt, true)}
             </span>
           </div>
-          <p className="text-neutral-300">{createExcerpt(post?.body, 26)}</p>
+          {/* <p className="text-neutral-300">{createExcerpt(post?.body, 26)}</p> */}
           <Separator className="w-[25%] bg-white/30" />
           <div className="text-neutral-300 text-sm">
             Written by{" "}

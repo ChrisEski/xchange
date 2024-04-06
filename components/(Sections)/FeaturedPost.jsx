@@ -5,7 +5,7 @@ import { capitalizeFirstLetter, createExcerpt, formatDate } from "@/lib/utils";
 
 const FeaturedPost = ({ post }) => {
   const { title, body, slug, author, featuredImage, createdAt, category } = post;
-  const formattedBody = createExcerpt(body, 16);
+  // const formattedBody = createExcerpt(body, 16);
   const formattedCategory = capitalizeFirstLetter(category);
   const formattedDate = formatDate(createdAt, true);
   const { firstName, lastName } = author;
@@ -38,7 +38,7 @@ const FeaturedPost = ({ post }) => {
           <h3 className="text-lg font-bold font-display leading-none text-white mt-1">{title}</h3>
           <span className=" text-neutral-300">Published {formattedDate}</span>
         </div>
-        <p className="text-sm text-neutral-300">{formattedBody}</p>
+        {/* <p className="text-sm text-neutral-300">{formattedBody}</p> */}
         <Separator className="w-[25%] bg-white/30" />
         <div className="text-neutral-300 text-xs">
           Written by{" "}

@@ -8,11 +8,11 @@ const SinglePostCard = ({ post }) => {
   const formattedCategory = capitalizeFirstLetter(post?.category);
   const formattedDate = formatDate(post?.createdAt, true);
   const nameInitials = getInitials(post?.author.firstName, post?.author.lastName);
-  const bodyExcerpt = createExcerpt(post?.body, 20);
+  // const bodyExcerpt = createExcerpt(post?.body, 20);
   const role = post?.author.isAdmin ? "Admin" : "Author";
 
   return (
-    <article className="rounded-lg overflow-hidden min-h-[440px] flex flex-col">
+    <article className="rounded-lg overflow-hidden min-h-[400px] flex flex-col">
       {/* Category label */}
       <span className="absolute text-white z-10 rounded text-sm font-semibold px-2 bg-white/20 m-4 border border-white">
         {formattedCategory}
@@ -46,7 +46,7 @@ const SinglePostCard = ({ post }) => {
             <h3 className="text-lg font-bold font-display leading-none">{post?.title}</h3>
           </Link>
           {/* Excerpt */}
-          <p className="text-sm text-neutral-700">{bodyExcerpt}</p>
+          {/* <p className="text-sm text-neutral-700">{bodyExcerpt}</p> */}
         </div>
 
         {/* Author details */}
