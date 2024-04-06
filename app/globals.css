@@ -46,7 +46,7 @@ h4.editorHeading {
 .tiptap code {
   @apply font-code bg-[#f4f4f4] border border-[#ccc] rounded-[5px] py-[1px] px-[4px] text-sm;
 }
-blockquote.editorBlockquote {
+.tiptap blockquote {
   /* font-size: 1.4em; */
   width: 60%;
   /* margin: 50px; */
@@ -59,7 +59,7 @@ blockquote.editorBlockquote {
   background: #ededed;
 }
 
-blockquote.editorBlockquote::before {
+.tiptap blockquote::before {
   font-family: Arial;
   content: "\201C";
   color: black;
@@ -69,7 +69,7 @@ blockquote.editorBlockquote::before {
   top: -10px;
 }
 
-blockquote.editorBlockquote::after {
+.tiptap blockquote::after {
   content: "";
 }
 

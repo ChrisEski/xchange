@@ -3,7 +3,7 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
-const DOMElement = ({ body }) => {
+const ArticleBody = ({ body }) => {
   const editor = useEditor({
     extensions: [StarterKit],
     editable: false,
@@ -18,4 +18,4 @@ const DOMElement = ({ body }) => {
   return <EditorContent editor={editor} />;
 };
 
-export default DOMElement;
+export default ArticleBody;

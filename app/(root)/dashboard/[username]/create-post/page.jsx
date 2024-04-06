@@ -89,7 +89,7 @@ const CreatePost = () => {
         },
       }),
     ],
-    content: `<p><code class="editorCode">const message = 'Hello from Tiptap editor!';</code></p><p><code class="editorCode">console.log(message);</code></p><p></p><blockquote>This is a blockquote section of the content</blockquote><p></p><p></p>`,
+    content: "",
     editorProps: {
       attributes: {
         class:

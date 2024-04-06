@@ -7,7 +7,7 @@ import CategoryLabel from "@/components/ui/CategoryLabel";
 import SectionContainer from "@/components/(Sections)/SectionContainer";
 import SectionPosts from "@/components/(Sections)/SectionPosts";
 import Link from "next/link";
-import DOMElement from "@/components/DOMElement";
+import ArticleBody from "@/components/ArticleBody";
 
 const Article = async ({ params }) => {
   const showBorders = false;
@@ -72,7 +72,7 @@ const Article = async ({ params }) => {
           />
         </div>
         {/* <p className="text-lg">{body}</p> */}
-        <DOMElement body={body} />
+        <ArticleBody body={body} />
         {/* <p
           className="text-lg"
           dangerouslySetInnerHTML={parsedBody}
